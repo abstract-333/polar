@@ -1150,6 +1150,16 @@
               }
             }
           },
+          "402": {
+            "description": "Payment required to apply the subscription update.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PaymentFailed"
+                }
+              }
+            }
+          },
           "403": {
             "description": "Subscription is already canceled or will be at the end of the period.",
             "content": {
@@ -2326,7 +2336,7 @@
           {
             "lang": "go",
             "label": "Go (SDK)",
-            "source": "package main\n\nimport(\n\t\"context\"\n\t\"os\"\n\tpolargo \"github.com/polarsource/polar-go\"\n\t\"github.com/polarsource/polar-go/models/components\"\n\t\"log\"\n)\n\nfunc main() {\n    ctx := context.Background()\n\n    s := polargo.New(\n        polargo.WithSecurity(os.Getenv(\"POLAR_ACCESS_TOKEN\")),\n    )\n\n    res, err := s.Benefits.Create(ctx, components.CreateBenefitCreateLicenseKeys(\n        components.BenefitLicenseKeysCreate{\n            Description: \"mature emergent at outside arrogantly gadzooks zealous equatorial notwithstanding\",\n            OrganizationID: polargo.Pointer(\"1dbfc517-0bbf-4301-9ba8-555ca42b9737\"),\n            Properties: components.BenefitLicenseKeysCreateProperties{},\n        },\n    ))\n    if err != nil {\n        log.Fatal(err)\n    }\n    if res.Benefit != nil {\n        switch res.Benefit.Type {\n            case components.BenefitUnionTypeCustom:\n                // res.Benefit.BenefitCustom is populated\n            case components.BenefitUnionTypeDiscord:\n                // res.Benefit.BenefitDiscord is populated\n            case components.BenefitUnionTypeDownloadables:\n                // res.Benefit.BenefitDownloadables is populated\n            case components.BenefitUnionTypeGithubRepository:\n                // res.Benefit.BenefitGitHubRepository is populated\n            case components.BenefitUnionTypeLicenseKeys:\n                // res.Benefit.BenefitLicenseKeys is populated\n            case components.BenefitUnionTypeMeterCredit:\n                // res.Benefit.BenefitMeterCredit is populated\n        }\n\n    }\n}"
+            "source": "package main\n\nimport(\n\t\"context\"\n\t\"os\"\n\tpolargo \"github.com/polarsource/polar-go\"\n\t\"github.com/polarsource/polar-go/models/components\"\n\t\"log\"\n)\n\nfunc main() {\n    ctx := context.Background()\n\n    s := polargo.New(\n        polargo.WithSecurity(os.Getenv(\"POLAR_ACCESS_TOKEN\")),\n    )\n\n    res, err := s.Benefits.Create(ctx, components.CreateBenefitCreateLicenseKeys(\n        components.BenefitLicenseKeysCreate{\n            Description: \"mature emergent at outside arrogantly gadzooks zealous equatorial notwithstanding\",\n            OrganizationID: polargo.Pointer(\"1dbfc517-0bbf-4301-9ba8-555ca42b9737\"),\n            Properties: components.BenefitLicenseKeysCreateProperties{},\n        },\n    ))\n    if err != nil {\n        log.Fatal(err)\n    }\n    if res.Benefit != nil {\n        switch res.Benefit.Type {\n            case components.BenefitUnionTypeCustom:\n                // res.Benefit.BenefitCustom is populated\n            case components.BenefitUnionTypeDiscord:\n                // res.Benefit.BenefitDiscord is populated\n            case components.BenefitUnionTypeDownloadables:\n                // res.Benefit.BenefitDownloadables is populated\n            case components.BenefitUnionTypeFeatureFlag:\n                // res.Benefit.BenefitFeatureFlag is populated\n            case components.BenefitUnionTypeGithubRepository:\n                // res.Benefit.BenefitGitHubRepository is populated\n            case components.BenefitUnionTypeLicenseKeys:\n                // res.Benefit.BenefitLicenseKeys is populated\n            case components.BenefitUnionTypeMeterCredit:\n                // res.Benefit.BenefitMeterCredit is populated\n        }\n\n    }\n}"
           },
           {
             "lang": "python",
@@ -2419,7 +2429,7 @@
           {
             "lang": "go",
             "label": "Go (SDK)",
-            "source": "package main\n\nimport(\n\t\"context\"\n\t\"os\"\n\tpolargo \"github.com/polarsource/polar-go\"\n\t\"log\"\n\t\"github.com/polarsource/polar-go/models/components\"\n)\n\nfunc main() {\n    ctx := context.Background()\n\n    s := polargo.New(\n        polargo.WithSecurity(os.Getenv(\"POLAR_ACCESS_TOKEN\")),\n    )\n\n    res, err := s.Benefits.Get(ctx, \"<value>\")\n    if err != nil {\n        log.Fatal(err)\n    }\n    if res.Benefit != nil {\n        switch res.Benefit.Type {\n            case components.BenefitUnionTypeCustom:\n                // res.Benefit.BenefitCustom is populated\n            case components.BenefitUnionTypeDiscord:\n                // res.Benefit.BenefitDiscord is populated\n            case components.BenefitUnionTypeDownloadables:\n                // res.Benefit.BenefitDownloadables is populated\n            case components.BenefitUnionTypeGithubRepository:\n                // res.Benefit.BenefitGitHubRepository is populated\n            case components.BenefitUnionTypeLicenseKeys:\n                // res.Benefit.BenefitLicenseKeys is populated\n            case components.BenefitUnionTypeMeterCredit:\n                // res.Benefit.BenefitMeterCredit is populated\n        }\n\n    }\n}"
+            "source": "package main\n\nimport(\n\t\"context\"\n\t\"os\"\n\tpolargo \"github.com/polarsource/polar-go\"\n\t\"log\"\n\t\"github.com/polarsource/polar-go/models/components\"\n)\n\nfunc main() {\n    ctx := context.Background()\n\n    s := polargo.New(\n        polargo.WithSecurity(os.Getenv(\"POLAR_ACCESS_TOKEN\")),\n    )\n\n    res, err := s.Benefits.Get(ctx, \"<value>\")\n    if err != nil {\n        log.Fatal(err)\n    }\n    if res.Benefit != nil {\n        switch res.Benefit.Type {\n            case components.BenefitUnionTypeCustom:\n                // res.Benefit.BenefitCustom is populated\n            case components.BenefitUnionTypeDiscord:\n                // res.Benefit.BenefitDiscord is populated\n            case components.BenefitUnionTypeDownloadables:\n                // res.Benefit.BenefitDownloadables is populated\n            case components.BenefitUnionTypeFeatureFlag:\n                // res.Benefit.BenefitFeatureFlag is populated\n            case components.BenefitUnionTypeGithubRepository:\n                // res.Benefit.BenefitGitHubRepository is populated\n            case components.BenefitUnionTypeLicenseKeys:\n                // res.Benefit.BenefitLicenseKeys is populated\n            case components.BenefitUnionTypeMeterCredit:\n                // res.Benefit.BenefitMeterCredit is populated\n        }\n\n    }\n}"
           },
           {
             "lang": "python",
@@ -2543,12 +2553,12 @@
           {
             "lang": "go",
             "label": "Go (SDK)",
-            "source": "package main\n\nimport(\n\t\"context\"\n\t\"os\"\n\tpolargo \"github.com/polarsource/polar-go\"\n\t\"github.com/polarsource/polar-go/models/components\"\n\t\"github.com/polarsource/polar-go/models/operations\"\n\t\"log\"\n)\n\nfunc main() {\n    ctx := context.Background()\n\n    s := polargo.New(\n        polargo.WithSecurity(os.Getenv(\"POLAR_ACCESS_TOKEN\")),\n    )\n\n    res, err := s.Benefits.Update(ctx, \"<value>\", operations.CreateBenefitsUpdateBenefitUpdateBenefitCustomUpdate(\n        components.BenefitCustomUpdate{},\n    ))\n    if err != nil {\n        log.Fatal(err)\n    }\n    if res.Benefit != nil {\n        switch res.Benefit.Type {\n            case components.BenefitUnionTypeCustom:\n                // res.Benefit.BenefitCustom is populated\n            case components.BenefitUnionTypeDiscord:\n                // res.Benefit.BenefitDiscord is populated\n            case components.BenefitUnionTypeDownloadables:\n                // res.Benefit.BenefitDownloadables is populated\n            case components.BenefitUnionTypeGithubRepository:\n                // res.Benefit.BenefitGitHubRepository is populated\n            case components.BenefitUnionTypeLicenseKeys:\n                // res.Benefit.BenefitLicenseKeys is populated\n            case components.BenefitUnionTypeMeterCredit:\n                // res.Benefit.BenefitMeterCredit is populated\n        }\n\n    }\n}"
+            "source": "package main\n\nimport(\n\t\"context\"\n\t\"os\"\n\tpolargo \"github.com/polarsource/polar-go\"\n\t\"github.com/polarsource/polar-go/models/components\"\n\t\"github.com/polarsource/polar-go/models/operations\"\n\t\"log\"\n)\n\nfunc main() {\n    ctx := context.Background()\n\n    s := polargo.New(\n        polargo.WithSecurity(os.Getenv(\"POLAR_ACCESS_TOKEN\")),\n    )\n\n    res, err := s.Benefits.Update(ctx, \"<value>\", operations.CreateBenefitsUpdateBenefitUpdateBenefitCustomUpdate(\n        components.BenefitCustomUpdate{},\n    ))\n    if err != nil {\n        log.Fatal(err)\n    }\n    if res.Benefit != nil {\n        switch res.Benefit.Type {\n            case components.BenefitUnionTypeCustom:\n                // res.Benefit.BenefitCustom is populated\n            case components.BenefitUnionTypeDiscord:\n                // res.Benefit.BenefitDiscord is populated\n            case components.BenefitUnionTypeDownloadables:\n                // res.Benefit.BenefitDownloadables is populated\n            case components.BenefitUnionTypeFeatureFlag:\n                // res.Benefit.BenefitFeatureFlag is populated\n            case components.BenefitUnionTypeGithubRepository:\n                // res.Benefit.BenefitGitHubRepository is populated\n            case components.BenefitUnionTypeLicenseKeys:\n                // res.Benefit.BenefitLicenseKeys is populated\n            case components.BenefitUnionTypeMeterCredit:\n                // res.Benefit.BenefitMeterCredit is populated\n        }\n\n    }\n}"
           },
           {
             "lang": "python",
             "label": "Python (SDK)",
-            "source": "from polar_sdk import Polar\n\n\nwith Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n) as polar:\n\n    res = polar.benefits.update(id=\"<value>\", request_body={\n        \"type\": \"meter_credit\",\n    })\n\n    # Handle response\n    print(res)"
+            "source": "from polar_sdk import Polar\n\n\nwith Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n) as polar:\n\n    res = polar.benefits.update(id=\"<value>\", request_body={\n        \"type\": \"feature_flag\",\n    })\n\n    # Handle response\n    print(res)"
           },
           {
             "lang": "typescript",
@@ -6783,7 +6793,7 @@
           {
             "lang": "go",
             "label": "Go (SDK)",
-            "source": "package main\n\nimport(\n\t\"context\"\n\t\"os\"\n\tpolargo \"github.com/polarsource/polar-go\"\n\t\"github.com/polarsource/polar-go/models/components\"\n\t\"log\"\n)\n\nfunc main() {\n    ctx := context.Background()\n\n    s := polargo.New(\n        polargo.WithSecurity(os.Getenv(\"POLAR_ACCESS_TOKEN\")),\n    )\n\n    res, err := s.Checkouts.Create(ctx, components.CheckoutCreate{\n        CustomerName: polargo.Pointer(\"John Doe\"),\n        CustomerBillingAddress: &components.AddressInput{\n            Country: components.CountryAlpha2InputUs,\n        },\n        Locale: polargo.Pointer(\"en\"),\n        Products: []string{\n            \"<value 1>\",\n            \"<value 2>\",\n            \"<value 3>\",\n        },\n    })\n    if err != nil {\n        log.Fatal(err)\n    }\n    if res.Checkout != nil {\n        switch res.Checkout.Discount.Type {\n            case components.CheckoutDiscountTypeCheckoutDiscountFixedOnceForeverDuration:\n                // res.Checkout.Discount.CheckoutDiscountFixedOnceForeverDuration is populated\n            case components.CheckoutDiscountTypeCheckoutDiscountFixedRepeatDuration:\n                // res.Checkout.Discount.CheckoutDiscountFixedRepeatDuration is populated\n            case components.CheckoutDiscountTypeCheckoutDiscountPercentageOnceForeverDuration:\n                // res.Checkout.Discount.CheckoutDiscountPercentageOnceForeverDuration is populated\n            case components.CheckoutDiscountTypeCheckoutDiscountPercentageRepeatDuration:\n                // res.Checkout.Discount.CheckoutDiscountPercentageRepeatDuration is populated\n        }\n\n    }\n}"
+            "source": "package main\n\nimport(\n\t\"context\"\n\t\"os\"\n\tpolargo \"github.com/polarsource/polar-go\"\n\t\"github.com/polarsource/polar-go/models/components\"\n\t\"log\"\n)\n\nfunc main() {\n    ctx := context.Background()\n\n    s := polargo.New(\n        polargo.WithSecurity(os.Getenv(\"POLAR_ACCESS_TOKEN\")),\n    )\n\n    res, err := s.Checkouts.Create(ctx, components.CheckoutCreate{\n        CustomerName: polargo.Pointer(\"John Doe\"),\n        CustomerBillingAddress: &components.AddressInput{\n            Country: components.CountryAlpha2InputUs,\n        },\n        Locale: polargo.Pointer(\"en\"),\n        Products: []string{\n            \"<value 1>\",\n            \"<value 2>\",\n            \"<value 3>\",\n        },\n    })\n    if err != nil {\n        log.Fatal(err)\n    }\n    if res.Checkout != nil {\n        switch res.Checkout.ProductPrice.Type {\n            case components.CheckoutProductPriceTypeLegacyRecurringProductPrice:\n                // res.Checkout.ProductPrice.LegacyRecurringProductPrice is populated\n            case components.CheckoutProductPriceTypeProductPrice:\n                // res.Checkout.ProductPrice.ProductPrice is populated\n        }\n\n    }\n}"
           },
           {
             "lang": "python",
@@ -6871,7 +6881,7 @@
           {
             "lang": "go",
             "label": "Go (SDK)",
-            "source": "package main\n\nimport(\n\t\"context\"\n\t\"os\"\n\tpolargo \"github.com/polarsource/polar-go\"\n\t\"log\"\n\t\"github.com/polarsource/polar-go/models/components\"\n)\n\nfunc main() {\n    ctx := context.Background()\n\n    s := polargo.New(\n        polargo.WithSecurity(os.Getenv(\"POLAR_ACCESS_TOKEN\")),\n    )\n\n    res, err := s.Checkouts.Get(ctx, \"<value>\")\n    if err != nil {\n        log.Fatal(err)\n    }\n    if res.Checkout != nil {\n        switch res.Checkout.Discount.Type {\n            case components.CheckoutDiscountTypeCheckoutDiscountFixedOnceForeverDuration:\n                // res.Checkout.Discount.CheckoutDiscountFixedOnceForeverDuration is populated\n            case components.CheckoutDiscountTypeCheckoutDiscountFixedRepeatDuration:\n                // res.Checkout.Discount.CheckoutDiscountFixedRepeatDuration is populated\n            case components.CheckoutDiscountTypeCheckoutDiscountPercentageOnceForeverDuration:\n                // res.Checkout.Discount.CheckoutDiscountPercentageOnceForeverDuration is populated\n            case components.CheckoutDiscountTypeCheckoutDiscountPercentageRepeatDuration:\n                // res.Checkout.Discount.CheckoutDiscountPercentageRepeatDuration is populated\n        }\n\n    }\n}"
+            "source": "package main\n\nimport(\n\t\"context\"\n\t\"os\"\n\tpolargo \"github.com/polarsource/polar-go\"\n\t\"log\"\n\t\"github.com/polarsource/polar-go/models/components\"\n)\n\nfunc main() {\n    ctx := context.Background()\n\n    s := polargo.New(\n        polargo.WithSecurity(os.Getenv(\"POLAR_ACCESS_TOKEN\")),\n    )\n\n    res, err := s.Checkouts.Get(ctx, \"<value>\")\n    if err != nil {\n        log.Fatal(err)\n    }\n    if res.Checkout != nil {\n        switch res.Checkout.ProductPrice.Type {\n            case components.CheckoutProductPriceTypeLegacyRecurringProductPrice:\n                // res.Checkout.ProductPrice.LegacyRecurringProductPrice is populated\n            case components.CheckoutProductPriceTypeProductPrice:\n                // res.Checkout.ProductPrice.ProductPrice is populated\n        }\n\n    }\n}"
           },
           {
             "lang": "python",
@@ -6977,7 +6987,7 @@
           {
             "lang": "go",
             "label": "Go (SDK)",
-            "source": "package main\n\nimport(\n\t\"context\"\n\t\"os\"\n\tpolargo \"github.com/polarsource/polar-go\"\n\t\"github.com/polarsource/polar-go/models/components\"\n\t\"log\"\n)\n\nfunc main() {\n    ctx := context.Background()\n\n    s := polargo.New(\n        polargo.WithSecurity(os.Getenv(\"POLAR_ACCESS_TOKEN\")),\n    )\n\n    res, err := s.Checkouts.Update(ctx, \"<value>\", components.CheckoutUpdate{\n        CustomerName: polargo.Pointer(\"John Doe\"),\n        CustomerBillingAddress: &components.AddressInput{\n            Country: components.CountryAlpha2InputUs,\n        },\n        Locale: polargo.Pointer(\"en\"),\n    })\n    if err != nil {\n        log.Fatal(err)\n    }\n    if res.Checkout != nil {\n        switch res.Checkout.Discount.Type {\n            case components.CheckoutDiscountTypeCheckoutDiscountFixedOnceForeverDuration:\n                // res.Checkout.Discount.CheckoutDiscountFixedOnceForeverDuration is populated\n            case components.CheckoutDiscountTypeCheckoutDiscountFixedRepeatDuration:\n                // res.Checkout.Discount.CheckoutDiscountFixedRepeatDuration is populated\n            case components.CheckoutDiscountTypeCheckoutDiscountPercentageOnceForeverDuration:\n                // res.Checkout.Discount.CheckoutDiscountPercentageOnceForeverDuration is populated\n            case components.CheckoutDiscountTypeCheckoutDiscountPercentageRepeatDuration:\n                // res.Checkout.Discount.CheckoutDiscountPercentageRepeatDuration is populated\n        }\n\n    }\n}"
+            "source": "package main\n\nimport(\n\t\"context\"\n\t\"os\"\n\tpolargo \"github.com/polarsource/polar-go\"\n\t\"github.com/polarsource/polar-go/models/components\"\n\t\"log\"\n)\n\nfunc main() {\n    ctx := context.Background()\n\n    s := polargo.New(\n        polargo.WithSecurity(os.Getenv(\"POLAR_ACCESS_TOKEN\")),\n    )\n\n    res, err := s.Checkouts.Update(ctx, \"<value>\", components.CheckoutUpdate{\n        CustomerName: polargo.Pointer(\"John Doe\"),\n        CustomerBillingAddress: &components.AddressInput{\n            Country: components.CountryAlpha2InputUs,\n        },\n        Locale: polargo.Pointer(\"en\"),\n    })\n    if err != nil {\n        log.Fatal(err)\n    }\n    if res.Checkout != nil {\n        switch res.Checkout.ProductPrice.Type {\n            case components.CheckoutProductPriceTypeLegacyRecurringProductPrice:\n                // res.Checkout.ProductPrice.LegacyRecurringProductPrice is populated\n            case components.CheckoutProductPriceTypeProductPrice:\n                // res.Checkout.ProductPrice.ProductPrice is populated\n        }\n\n    }\n}"
           },
           {
             "lang": "python",
@@ -7073,7 +7083,7 @@
           {
             "lang": "go",
             "label": "Go (SDK)",
-            "source": "package main\n\nimport(\n\t\"context\"\n\tpolargo \"github.com/polarsource/polar-go\"\n\t\"log\"\n\t\"github.com/polarsource/polar-go/models/components\"\n)\n\nfunc main() {\n    ctx := context.Background()\n\n    s := polargo.New()\n\n    res, err := s.Checkouts.ClientGet(ctx, \"<value>\")\n    if err != nil {\n        log.Fatal(err)\n    }\n    if res.CheckoutPublic != nil {\n        switch res.CheckoutPublic.Discount.Type {\n            case components.CheckoutPublicDiscountTypeCheckoutDiscountFixedOnceForeverDuration:\n                // res.CheckoutPublic.Discount.CheckoutDiscountFixedOnceForeverDuration is populated\n            case components.CheckoutPublicDiscountTypeCheckoutDiscountFixedRepeatDuration:\n                // res.CheckoutPublic.Discount.CheckoutDiscountFixedRepeatDuration is populated\n            case components.CheckoutPublicDiscountTypeCheckoutDiscountPercentageOnceForeverDuration:\n                // res.CheckoutPublic.Discount.CheckoutDiscountPercentageOnceForeverDuration is populated\n            case components.CheckoutPublicDiscountTypeCheckoutDiscountPercentageRepeatDuration:\n                // res.CheckoutPublic.Discount.CheckoutDiscountPercentageRepeatDuration is populated\n        }\n\n    }\n}"
+            "source": "package main\n\nimport(\n\t\"context\"\n\tpolargo \"github.com/polarsource/polar-go\"\n\t\"log\"\n\t\"github.com/polarsource/polar-go/models/components\"\n)\n\nfunc main() {\n    ctx := context.Background()\n\n    s := polargo.New()\n\n    res, err := s.Checkouts.ClientGet(ctx, \"<value>\")\n    if err != nil {\n        log.Fatal(err)\n    }\n    if res.CheckoutPublic != nil {\n        switch res.CheckoutPublic.ProductPrice.Type {\n            case components.CheckoutPublicProductPriceTypeLegacyRecurringProductPrice:\n                // res.CheckoutPublic.ProductPrice.LegacyRecurringProductPrice is populated\n            case components.CheckoutPublicProductPriceTypeProductPrice:\n                // res.CheckoutPublic.ProductPrice.ProductPrice is populated\n        }\n\n    }\n}"
           },
           {
             "lang": "python",
@@ -7187,7 +7197,7 @@
           {
             "lang": "go",
             "label": "Go (SDK)",
-            "source": "package main\n\nimport(\n\t\"context\"\n\tpolargo \"github.com/polarsource/polar-go\"\n\t\"github.com/polarsource/polar-go/models/components\"\n\t\"log\"\n)\n\nfunc main() {\n    ctx := context.Background()\n\n    s := polargo.New()\n\n    res, err := s.Checkouts.ClientUpdate(ctx, \"<value>\", components.CheckoutUpdatePublic{\n        CustomerName: polargo.Pointer(\"John Doe\"),\n        CustomerBillingAddress: &components.AddressInput{\n            Country: components.CountryAlpha2InputUs,\n        },\n        Locale: polargo.Pointer(\"en\"),\n    })\n    if err != nil {\n        log.Fatal(err)\n    }\n    if res.CheckoutPublic != nil {\n        switch res.CheckoutPublic.Discount.Type {\n            case components.CheckoutPublicDiscountTypeCheckoutDiscountFixedOnceForeverDuration:\n                // res.CheckoutPublic.Discount.CheckoutDiscountFixedOnceForeverDuration is populated\n            case components.CheckoutPublicDiscountTypeCheckoutDiscountFixedRepeatDuration:\n                // res.CheckoutPublic.Discount.CheckoutDiscountFixedRepeatDuration is populated\n            case components.CheckoutPublicDiscountTypeCheckoutDiscountPercentageOnceForeverDuration:\n                // res.CheckoutPublic.Discount.CheckoutDiscountPercentageOnceForeverDuration is populated\n            case components.CheckoutPublicDiscountTypeCheckoutDiscountPercentageRepeatDuration:\n                // res.CheckoutPublic.Discount.CheckoutDiscountPercentageRepeatDuration is populated\n        }\n\n    }\n}"
+            "source": "package main\n\nimport(\n\t\"context\"\n\tpolargo \"github.com/polarsource/polar-go\"\n\t\"github.com/polarsource/polar-go/models/components\"\n\t\"log\"\n)\n\nfunc main() {\n    ctx := context.Background()\n\n    s := polargo.New()\n\n    res, err := s.Checkouts.ClientUpdate(ctx, \"<value>\", components.CheckoutUpdatePublic{\n        CustomerName: polargo.Pointer(\"John Doe\"),\n        CustomerBillingAddress: &components.AddressInput{\n            Country: components.CountryAlpha2InputUs,\n        },\n        Locale: polargo.Pointer(\"en\"),\n    })\n    if err != nil {\n        log.Fatal(err)\n    }\n    if res.CheckoutPublic != nil {\n        switch res.CheckoutPublic.ProductPrice.Type {\n            case components.CheckoutPublicProductPriceTypeLegacyRecurringProductPrice:\n                // res.CheckoutPublic.ProductPrice.LegacyRecurringProductPrice is populated\n            case components.CheckoutPublicProductPriceTypeProductPrice:\n                // res.CheckoutPublic.ProductPrice.ProductPrice is populated\n        }\n\n    }\n}"
           },
           {
             "lang": "python",
@@ -7314,7 +7324,7 @@
           {
             "lang": "go",
             "label": "Go (SDK)",
-            "source": "package main\n\nimport(\n\t\"context\"\n\t\"os\"\n\tpolargo \"github.com/polarsource/polar-go\"\n\t\"github.com/polarsource/polar-go/models/components\"\n\t\"log\"\n)\n\nfunc main() {\n    ctx := context.Background()\n\n    s := polargo.New(\n        polargo.WithSecurity(os.Getenv(\"POLAR_ACCESS_TOKEN\")),\n    )\n\n    res, err := s.Checkouts.ClientConfirm(ctx, \"<value>\", components.CheckoutConfirmStripe{\n        CustomerName: polargo.Pointer(\"John Doe\"),\n        CustomerBillingAddress: &components.AddressInput{\n            Country: components.CountryAlpha2InputUs,\n        },\n        Locale: polargo.Pointer(\"en\"),\n    })\n    if err != nil {\n        log.Fatal(err)\n    }\n    if res.CheckoutPublicConfirmed != nil {\n        switch res.CheckoutPublicConfirmed.Discount.Type {\n            case components.CheckoutPublicConfirmedDiscountTypeCheckoutDiscountFixedOnceForeverDuration:\n                // res.CheckoutPublicConfirmed.Discount.CheckoutDiscountFixedOnceForeverDuration is populated\n            case components.CheckoutPublicConfirmedDiscountTypeCheckoutDiscountFixedRepeatDuration:\n                // res.CheckoutPublicConfirmed.Discount.CheckoutDiscountFixedRepeatDuration is populated\n            case components.CheckoutPublicConfirmedDiscountTypeCheckoutDiscountPercentageOnceForeverDuration:\n                // res.CheckoutPublicConfirmed.Discount.CheckoutDiscountPercentageOnceForeverDuration is populated\n            case components.CheckoutPublicConfirmedDiscountTypeCheckoutDiscountPercentageRepeatDuration:\n                // res.CheckoutPublicConfirmed.Discount.CheckoutDiscountPercentageRepeatDuration is populated\n        }\n\n    }\n}"
+            "source": "package main\n\nimport(\n\t\"context\"\n\t\"os\"\n\tpolargo \"github.com/polarsource/polar-go\"\n\t\"github.com/polarsource/polar-go/models/components\"\n\t\"log\"\n)\n\nfunc main() {\n    ctx := context.Background()\n\n    s := polargo.New(\n        polargo.WithSecurity(os.Getenv(\"POLAR_ACCESS_TOKEN\")),\n    )\n\n    res, err := s.Checkouts.ClientConfirm(ctx, \"<value>\", components.CheckoutConfirmStripe{\n        CustomerName: polargo.Pointer(\"John Doe\"),\n        CustomerBillingAddress: &components.AddressInput{\n            Country: components.CountryAlpha2InputUs,\n        },\n        Locale: polargo.Pointer(\"en\"),\n    })\n    if err != nil {\n        log.Fatal(err)\n    }\n    if res.CheckoutPublicConfirmed != nil {\n        switch res.CheckoutPublicConfirmed.ProductPrice.Type {\n            case components.CheckoutPublicConfirmedProductPriceTypeLegacyRecurringProductPrice:\n                // res.CheckoutPublicConfirmed.ProductPrice.LegacyRecurringProductPrice is populated\n            case components.CheckoutPublicConfirmedProductPriceTypeProductPrice:\n                // res.CheckoutPublicConfirmed.ProductPrice.ProductPrice is populated\n        }\n\n    }\n}"
           },
           {
             "lang": "python",
@@ -10891,7 +10901,7 @@
           {
             "lang": "go",
             "label": "Go (SDK)",
-            "source": "package main\n\nimport(\n\t\"context\"\n\t\"os\"\n\tpolargo \"github.com/polarsource/polar-go\"\n\t\"github.com/polarsource/polar-go/models/operations\"\n\t\"log\"\n)\n\nfunc main() {\n    ctx := context.Background()\n\n    s := polargo.New(\n        polargo.WithSecurity(os.Getenv(\"POLAR_ACCESS_TOKEN\")),\n    )\n\n    res, err := s.Customers.List(ctx, operations.CustomersListRequest{\n        OrganizationID: polargo.Pointer(operations.CreateCustomersListQueryParamOrganizationIDFilterStr(\n            \"1dbfc517-0bbf-4301-9ba8-555ca42b9737\",\n        )),\n    })\n    if err != nil {\n        log.Fatal(err)\n    }\n    if res.ListResourceCustomerWithMembers != nil {\n        for {\n            // handle items\n\n            res, err = res.Next()\n\n            if err != nil {\n                // handle error\n            }\n\n            if res == nil {\n                break\n            }\n        }\n    }\n}"
+            "source": "package main\n\nimport(\n\t\"context\"\n\t\"os\"\n\tpolargo \"github.com/polarsource/polar-go\"\n\t\"github.com/polarsource/polar-go/models/operations\"\n\t\"log\"\n)\n\nfunc main() {\n    ctx := context.Background()\n\n    s := polargo.New(\n        polargo.WithSecurity(os.Getenv(\"POLAR_ACCESS_TOKEN\")),\n    )\n\n    res, err := s.Customers.List(ctx, operations.CustomersListRequest{\n        OrganizationID: polargo.Pointer(operations.CreateCustomersListQueryParamOrganizationIDFilterStr(\n            \"1dbfc517-0bbf-4301-9ba8-555ca42b9737\",\n        )),\n    })\n    if err != nil {\n        log.Fatal(err)\n    }\n    if res.ListResourceCustomer != nil {\n        for {\n            // handle items\n\n            res, err = res.Next()\n\n            if err != nil {\n                // handle error\n            }\n\n            if res == nil {\n                break\n            }\n        }\n    }\n}"
           },
           {
             "lang": "python",
@@ -10968,17 +10978,17 @@
           {
             "lang": "go",
             "label": "Go (SDK)",
-            "source": "package main\n\nimport(\n\t\"context\"\n\t\"os\"\n\tpolargo \"github.com/polarsource/polar-go\"\n\t\"github.com/polarsource/polar-go/models/components\"\n\t\"log\"\n)\n\nfunc main() {\n    ctx := context.Background()\n\n    s := polargo.New(\n        polargo.WithSecurity(os.Getenv(\"POLAR_ACCESS_TOKEN\")),\n    )\n\n    res, err := s.Customers.Create(ctx, components.CustomerCreate{\n        ExternalID: polargo.Pointer(\"usr_1337\"),\n        Email: \"customer@example.com\",\n        Name: polargo.Pointer(\"John Doe\"),\n        BillingAddress: &components.AddressInput{\n            Country: components.CountryAlpha2InputUs,\n        },\n        TaxID: []*components.CustomerCreateTaxID{\n            polargo.Pointer(components.CreateCustomerCreateTaxIDStr(\n                \"911144442\",\n            )),\n            polargo.Pointer(components.CreateCustomerCreateTaxIDStr(\n                \"us_ein\",\n            )),\n        },\n        Locale: polargo.Pointer(\"en\"),\n        Type: components.CustomerTypeIndividual.ToPointer(),\n        OrganizationID: polargo.Pointer(\"1dbfc517-0bbf-4301-9ba8-555ca42b9737\"),\n        Owner: &components.OwnerCreate{\n            Email: polargo.Pointer(\"member@example.com\"),\n            Name: polargo.Pointer(\"Jane Doe\"),\n            ExternalID: polargo.Pointer(\"usr_1337\"),\n        },\n    })\n    if err != nil {\n        log.Fatal(err)\n    }\n    if res.CustomerWithMembers != nil {\n        // handle response\n    }\n}"
+            "source": "package main\n\nimport(\n\t\"context\"\n\t\"os\"\n\tpolargo \"github.com/polarsource/polar-go\"\n\t\"github.com/polarsource/polar-go/models/components\"\n\t\"log\"\n)\n\nfunc main() {\n    ctx := context.Background()\n\n    s := polargo.New(\n        polargo.WithSecurity(os.Getenv(\"POLAR_ACCESS_TOKEN\")),\n    )\n\n    res, err := s.Customers.Create(ctx, components.CustomerCreate{\n        ExternalID: polargo.Pointer(\"usr_1337\"),\n        Email: \"customer@example.com\",\n        Name: polargo.Pointer(\"John Doe\"),\n        BillingAddress: &components.AddressInput{\n            Country: components.CountryAlpha2InputUs,\n        },\n        Locale: polargo.Pointer(\"en\"),\n        Type: components.CustomerTypeIndividual.ToPointer(),\n        OrganizationID: polargo.Pointer(\"1dbfc517-0bbf-4301-9ba8-555ca42b9737\"),\n        Owner: &components.OwnerCreate{\n            Email: polargo.Pointer(\"member@example.com\"),\n            Name: polargo.Pointer(\"Jane Doe\"),\n            ExternalID: polargo.Pointer(\"usr_1337\"),\n        },\n    })\n    if err != nil {\n        log.Fatal(err)\n    }\n    if res.Customer != nil {\n        // handle response\n    }\n}"
           },
           {
             "lang": "python",
             "label": "Python (SDK)",
-            "source": "import polar_sdk\nfrom polar_sdk import Polar\n\n\nwith Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n) as polar:\n\n    res = polar.customers.create(request={\n        \"external_id\": \"usr_1337\",\n        \"email\": \"customer@example.com\",\n        \"name\": \"John Doe\",\n        \"billing_address\": {\n            \"country\": polar_sdk.CountryAlpha2Input.US,\n        },\n        \"tax_id\": [\n            \"911144442\",\n            \"us_ein\",\n        ],\n        \"locale\": \"en\",\n        \"type\": polar_sdk.CustomerType.INDIVIDUAL,\n        \"organization_id\": \"1dbfc517-0bbf-4301-9ba8-555ca42b9737\",\n        \"owner\": {\n            \"email\": \"member@example.com\",\n            \"name\": \"Jane Doe\",\n            \"external_id\": \"usr_1337\",\n        },\n    })\n\n    # Handle response\n    print(res)"
+            "source": "import polar_sdk\nfrom polar_sdk import Polar\n\n\nwith Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n) as polar:\n\n    res = polar.customers.create(request={\n        \"external_id\": \"usr_1337\",\n        \"email\": \"customer@example.com\",\n        \"name\": \"John Doe\",\n        \"billing_address\": {\n            \"country\": polar_sdk.CountryAlpha2Input.US,\n        },\n        \"locale\": \"en\",\n        \"type\": polar_sdk.CustomerType.INDIVIDUAL,\n        \"organization_id\": \"1dbfc517-0bbf-4301-9ba8-555ca42b9737\",\n        \"owner\": {\n            \"email\": \"member@example.com\",\n            \"name\": \"Jane Doe\",\n            \"external_id\": \"usr_1337\",\n        },\n    })\n\n    # Handle response\n    print(res)"
           },
           {
             "lang": "typescript",
             "label": "Typescript (SDK)",
-            "source": "import { Polar } from \"@polar-sh/sdk\";\n\nconst polar = new Polar({\n  accessToken: process.env[\"POLAR_ACCESS_TOKEN\"] ?? \"\",\n});\n\nasync function run() {\n  const result = await polar.customers.create({\n    externalId: \"usr_1337\",\n    email: \"customer@example.com\",\n    name: \"John Doe\",\n    billingAddress: {\n      country: \"US\",\n    },\n    taxId: [\n      \"911144442\",\n      \"us_ein\",\n    ],\n    locale: \"en\",\n    type: \"individual\",\n    organizationId: \"1dbfc517-0bbf-4301-9ba8-555ca42b9737\",\n    owner: {\n      email: \"member@example.com\",\n      name: \"Jane Doe\",\n      externalId: \"usr_1337\",\n    },\n  });\n\n  console.log(result);\n}\n\nrun();"
+            "source": "import { Polar } from \"@polar-sh/sdk\";\n\nconst polar = new Polar({\n  accessToken: process.env[\"POLAR_ACCESS_TOKEN\"] ?? \"\",\n});\n\nasync function run() {\n  const result = await polar.customers.create({\n    externalId: \"usr_1337\",\n    email: \"customer@example.com\",\n    name: \"John Doe\",\n    billingAddress: {\n      country: \"US\",\n    },\n    locale: \"en\",\n    type: \"individual\",\n    organizationId: \"1dbfc517-0bbf-4301-9ba8-555ca42b9737\",\n    owner: {\n      email: \"member@example.com\",\n      name: \"Jane Doe\",\n      externalId: \"usr_1337\",\n    },\n  });\n\n  console.log(result);\n}\n\nrun();"
           },
           {
             "lang": "php",
@@ -11179,7 +11189,7 @@
           {
             "lang": "go",
             "label": "Go (SDK)",
-            "source": "package main\n\nimport(\n\t\"context\"\n\t\"os\"\n\tpolargo \"github.com/polarsource/polar-go\"\n\t\"log\"\n)\n\nfunc main() {\n    ctx := context.Background()\n\n    s := polargo.New(\n        polargo.WithSecurity(os.Getenv(\"POLAR_ACCESS_TOKEN\")),\n    )\n\n    res, err := s.Customers.Get(ctx, \"<value>\")\n    if err != nil {\n        log.Fatal(err)\n    }\n    if res.CustomerWithMembers != nil {\n        // handle response\n    }\n}"
+            "source": "package main\n\nimport(\n\t\"context\"\n\t\"os\"\n\tpolargo \"github.com/polarsource/polar-go\"\n\t\"log\"\n)\n\nfunc main() {\n    ctx := context.Background()\n\n    s := polargo.New(\n        polargo.WithSecurity(os.Getenv(\"POLAR_ACCESS_TOKEN\")),\n    )\n\n    res, err := s.Customers.Get(ctx, \"<value>\")\n    if err != nil {\n        log.Fatal(err)\n    }\n    if res.Customer != nil {\n        // handle response\n    }\n}"
           },
           {
             "lang": "python",
@@ -11280,17 +11290,17 @@
           {
             "lang": "go",
             "label": "Go (SDK)",
-            "source": "package main\n\nimport(\n\t\"context\"\n\t\"os\"\n\tpolargo \"github.com/polarsource/polar-go\"\n\t\"github.com/polarsource/polar-go/models/components\"\n\t\"log\"\n)\n\nfunc main() {\n    ctx := context.Background()\n\n    s := polargo.New(\n        polargo.WithSecurity(os.Getenv(\"POLAR_ACCESS_TOKEN\")),\n    )\n\n    res, err := s.Customers.Update(ctx, \"<value>\", components.CustomerUpdate{\n        Email: polargo.Pointer(\"customer@example.com\"),\n        Name: polargo.Pointer(\"John Doe\"),\n        BillingAddress: &components.AddressInput{\n            Country: components.CountryAlpha2InputUs,\n        },\n        TaxID: []*components.CustomerUpdateTaxID{\n            polargo.Pointer(components.CreateCustomerUpdateTaxIDStr(\n                \"911144442\",\n            )),\n            polargo.Pointer(components.CreateCustomerUpdateTaxIDStr(\n                \"us_ein\",\n            )),\n        },\n        Locale: polargo.Pointer(\"en\"),\n        ExternalID: polargo.Pointer(\"usr_1337\"),\n        Type: components.CustomerTypeIndividual.ToPointer(),\n    })\n    if err != nil {\n        log.Fatal(err)\n    }\n    if res.CustomerWithMembers != nil {\n        // handle response\n    }\n}"
+            "source": "package main\n\nimport(\n\t\"context\"\n\t\"os\"\n\tpolargo \"github.com/polarsource/polar-go\"\n\t\"github.com/polarsource/polar-go/models/components\"\n\t\"log\"\n)\n\nfunc main() {\n    ctx := context.Background()\n\n    s := polargo.New(\n        polargo.WithSecurity(os.Getenv(\"POLAR_ACCESS_TOKEN\")),\n    )\n\n    res, err := s.Customers.Update(ctx, \"<value>\", components.CustomerUpdate{\n        Email: polargo.Pointer(\"customer@example.com\"),\n        Name: polargo.Pointer(\"John Doe\"),\n        BillingAddress: &components.AddressInput{\n            Country: components.CountryAlpha2InputUs,\n        },\n        Locale: polargo.Pointer(\"en\"),\n        ExternalID: polargo.Pointer(\"usr_1337\"),\n        Type: components.CustomerTypeIndividual.ToPointer(),\n    })\n    if err != nil {\n        log.Fatal(err)\n    }\n    if res.Customer != nil {\n        // handle response\n    }\n}"
           },
           {
             "lang": "python",
             "label": "Python (SDK)",
-            "source": "import polar_sdk\nfrom polar_sdk import Polar\n\n\nwith Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n) as polar:\n\n    res = polar.customers.update(id=\"<value>\", customer_update={\n        \"email\": \"customer@example.com\",\n        \"name\": \"John Doe\",\n        \"billing_address\": {\n            \"country\": polar_sdk.CountryAlpha2Input.US,\n        },\n        \"tax_id\": [\n            \"911144442\",\n            \"us_ein\",\n        ],\n        \"locale\": \"en\",\n        \"external_id\": \"usr_1337\",\n        \"type\": polar_sdk.CustomerType.INDIVIDUAL,\n    })\n\n    # Handle response\n    print(res)"
+            "source": "import polar_sdk\nfrom polar_sdk import Polar\n\n\nwith Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n) as polar:\n\n    res = polar.customers.update(id=\"<value>\", customer_update={\n        \"email\": \"customer@example.com\",\n        \"name\": \"John Doe\",\n        \"billing_address\": {\n            \"country\": polar_sdk.CountryAlpha2Input.US,\n        },\n        \"locale\": \"en\",\n        \"external_id\": \"usr_1337\",\n        \"type\": polar_sdk.CustomerType.INDIVIDUAL,\n    })\n\n    # Handle response\n    print(res)"
           },
           {
             "lang": "typescript",
             "label": "Typescript (SDK)",
-            "source": "import { Polar } from \"@polar-sh/sdk\";\n\nconst polar = new Polar({\n  accessToken: process.env[\"POLAR_ACCESS_TOKEN\"] ?? \"\",\n});\n\nasync function run() {\n  const result = await polar.customers.update({\n    id: \"<value>\",\n    customerUpdate: {\n      email: \"customer@example.com\",\n      name: \"John Doe\",\n      billingAddress: {\n        country: \"US\",\n      },\n      taxId: [\n        \"911144442\",\n        \"us_ein\",\n      ],\n      locale: \"en\",\n      externalId: \"usr_1337\",\n      type: \"individual\",\n    },\n  });\n\n  console.log(result);\n}\n\nrun();"
+            "source": "import { Polar } from \"@polar-sh/sdk\";\n\nconst polar = new Polar({\n  accessToken: process.env[\"POLAR_ACCESS_TOKEN\"] ?? \"\",\n});\n\nasync function run() {\n  const result = await polar.customers.update({\n    id: \"<value>\",\n    customerUpdate: {\n      email: \"customer@example.com\",\n      name: \"John Doe\",\n      billingAddress: {\n        country: \"US\",\n      },\n      locale: \"en\",\n      externalId: \"usr_1337\",\n      type: \"individual\",\n    },\n  });\n\n  console.log(result);\n}\n\nrun();"
           },
           {
             "lang": "php",
@@ -11468,7 +11478,7 @@
           {
             "lang": "go",
             "label": "Go (SDK)",
-            "source": "package main\n\nimport(\n\t\"context\"\n\t\"os\"\n\tpolargo \"github.com/polarsource/polar-go\"\n\t\"log\"\n)\n\nfunc main() {\n    ctx := context.Background()\n\n    s := polargo.New(\n        polargo.WithSecurity(os.Getenv(\"POLAR_ACCESS_TOKEN\")),\n    )\n\n    res, err := s.Customers.GetExternal(ctx, \"<id>\")\n    if err != nil {\n        log.Fatal(err)\n    }\n    if res.CustomerWithMembers != nil {\n        // handle response\n    }\n}"
+            "source": "package main\n\nimport(\n\t\"context\"\n\t\"os\"\n\tpolargo \"github.com/polarsource/polar-go\"\n\t\"log\"\n)\n\nfunc main() {\n    ctx := context.Background()\n\n    s := polargo.New(\n        polargo.WithSecurity(os.Getenv(\"POLAR_ACCESS_TOKEN\")),\n    )\n\n    res, err := s.Customers.GetExternal(ctx, \"<id>\")\n    if err != nil {\n        log.Fatal(err)\n    }\n    if res.Customer != nil {\n        // handle response\n    }\n}"
           },
           {
             "lang": "python",
@@ -11568,17 +11578,17 @@
           {
             "lang": "go",
             "label": "Go (SDK)",
-            "source": "package main\n\nimport(\n\t\"context\"\n\t\"os\"\n\tpolargo \"github.com/polarsource/polar-go\"\n\t\"github.com/polarsource/polar-go/models/components\"\n\t\"log\"\n)\n\nfunc main() {\n    ctx := context.Background()\n\n    s := polargo.New(\n        polargo.WithSecurity(os.Getenv(\"POLAR_ACCESS_TOKEN\")),\n    )\n\n    res, err := s.Customers.UpdateExternal(ctx, \"<id>\", components.CustomerUpdateExternalID{\n        Email: polargo.Pointer(\"customer@example.com\"),\n        Name: polargo.Pointer(\"John Doe\"),\n        BillingAddress: &components.AddressInput{\n            Country: components.CountryAlpha2InputUs,\n        },\n        TaxID: []*components.CustomerUpdateExternalIDTaxID{\n            polargo.Pointer(components.CreateCustomerUpdateExternalIDTaxIDStr(\n                \"911144442\",\n            )),\n            polargo.Pointer(components.CreateCustomerUpdateExternalIDTaxIDStr(\n                \"us_ein\",\n            )),\n        },\n        Locale: polargo.Pointer(\"en\"),\n    })\n    if err != nil {\n        log.Fatal(err)\n    }\n    if res.CustomerWithMembers != nil {\n        // handle response\n    }\n}"
+            "source": "package main\n\nimport(\n\t\"context\"\n\t\"os\"\n\tpolargo \"github.com/polarsource/polar-go\"\n\t\"github.com/polarsource/polar-go/models/components\"\n\t\"log\"\n)\n\nfunc main() {\n    ctx := context.Background()\n\n    s := polargo.New(\n        polargo.WithSecurity(os.Getenv(\"POLAR_ACCESS_TOKEN\")),\n    )\n\n    res, err := s.Customers.UpdateExternal(ctx, \"<id>\", components.CustomerUpdateExternalID{\n        Email: polargo.Pointer(\"customer@example.com\"),\n        Name: polargo.Pointer(\"John Doe\"),\n        BillingAddress: &components.AddressInput{\n            Country: components.CountryAlpha2InputUs,\n        },\n        Locale: polargo.Pointer(\"en\"),\n    })\n    if err != nil {\n        log.Fatal(err)\n    }\n    if res.Customer != nil {\n        // handle response\n    }\n}"
           },
           {
             "lang": "python",
             "label": "Python (SDK)",
-            "source": "from polar_sdk import Polar\n\n\nwith Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n) as polar:\n\n    res = polar.customers.update_external(external_id=\"<id>\", customer_update_external_id={\n        \"email\": \"customer@example.com\",\n        \"name\": \"John Doe\",\n        \"billing_address\": None,\n        \"tax_id\": [\n            \"911144442\",\n            \"us_ein\",\n        ],\n        \"locale\": \"en\",\n    })\n\n    # Handle response\n    print(res)"
+            "source": "from polar_sdk import Polar\n\n\nwith Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n) as polar:\n\n    res = polar.customers.update_external(external_id=\"<id>\", customer_update_external_id={\n        \"email\": \"customer@example.com\",\n        \"name\": \"John Doe\",\n        \"billing_address\": None,\n        \"locale\": \"en\",\n    })\n\n    # Handle response\n    print(res)"
           },
           {
             "lang": "typescript",
             "label": "Typescript (SDK)",
-            "source": "import { Polar } from \"@polar-sh/sdk\";\n\nconst polar = new Polar({\n  accessToken: process.env[\"POLAR_ACCESS_TOKEN\"] ?? \"\",\n});\n\nasync function run() {\n  const result = await polar.customers.updateExternal({\n    externalId: \"<id>\",\n    customerUpdateExternalID: {\n      email: \"customer@example.com\",\n      name: \"John Doe\",\n      billingAddress: {\n        country: \"US\",\n      },\n      taxId: [\n        \"911144442\",\n        \"us_ein\",\n      ],\n      locale: \"en\",\n    },\n  });\n\n  console.log(result);\n}\n\nrun();"
+            "source": "import { Polar } from \"@polar-sh/sdk\";\n\nconst polar = new Polar({\n  accessToken: process.env[\"POLAR_ACCESS_TOKEN\"] ?? \"\",\n});\n\nasync function run() {\n  const result = await polar.customers.updateExternal({\n    externalId: \"<id>\",\n    customerUpdateExternalID: {\n      email: \"customer@example.com\",\n      name: \"John Doe\",\n      billingAddress: {\n        country: \"US\",\n      },\n      locale: \"en\",\n    },\n  });\n\n  console.log(result);\n}\n\nrun();"
           },
           {
             "lang": "php",
@@ -11915,6 +11925,24 @@
               "title": "External Customer Id"
             },
             "description": "Filter by customer external ID."
+          },
+          {
+            "name": "role",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "$ref": "#/components/schemas/MemberRole"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Filter by member role.",
+              "title": "Role"
+            },
+            "description": "Filter by member role."
           },
           {
             "name": "page",
@@ -12819,7 +12847,7 @@
           {
             "lang": "go",
             "label": "Go (SDK)",
-            "source": "package main\n\nimport(\n\t\"context\"\n\tpolargo \"github.com/polarsource/polar-go\"\n\t\"os\"\n\t\"github.com/polarsource/polar-go/models/operations\"\n\t\"log\"\n\t\"github.com/polarsource/polar-go/models/components\"\n)\n\nfunc main() {\n    ctx := context.Background()\n\n    s := polargo.New()\n\n    res, err := s.CustomerPortal.BenefitGrants.Get(ctx, operations.CustomerPortalBenefitGrantsGetSecurity{\n        CustomerSession: polargo.Pointer(os.Getenv(\"POLAR_CUSTOMER_SESSION\")),\n    }, \"<value>\")\n    if err != nil {\n        log.Fatal(err)\n    }\n    if res.CustomerBenefitGrant != nil {\n        switch res.CustomerBenefitGrant.Type {\n            case components.CustomerBenefitGrantTypeCustomerBenefitGrantDiscord:\n                // res.CustomerBenefitGrant.CustomerBenefitGrantDiscord is populated\n            case components.CustomerBenefitGrantTypeCustomerBenefitGrantGitHubRepository:\n                // res.CustomerBenefitGrant.CustomerBenefitGrantGitHubRepository is populated\n            case components.CustomerBenefitGrantTypeCustomerBenefitGrantDownloadables:\n                // res.CustomerBenefitGrant.CustomerBenefitGrantDownloadables is populated\n            case components.CustomerBenefitGrantTypeCustomerBenefitGrantLicenseKeys:\n                // res.CustomerBenefitGrant.CustomerBenefitGrantLicenseKeys is populated\n            case components.CustomerBenefitGrantTypeCustomerBenefitGrantCustom:\n                // res.CustomerBenefitGrant.CustomerBenefitGrantCustom is populated\n            case components.CustomerBenefitGrantTypeCustomerBenefitGrantMeterCredit:\n                // res.CustomerBenefitGrant.CustomerBenefitGrantMeterCredit is populated\n        }\n\n    }\n}"
+            "source": "package main\n\nimport(\n\t\"context\"\n\tpolargo \"github.com/polarsource/polar-go\"\n\t\"os\"\n\t\"github.com/polarsource/polar-go/models/operations\"\n\t\"log\"\n\t\"github.com/polarsource/polar-go/models/components\"\n)\n\nfunc main() {\n    ctx := context.Background()\n\n    s := polargo.New()\n\n    res, err := s.CustomerPortal.BenefitGrants.Get(ctx, operations.CustomerPortalBenefitGrantsGetSecurity{\n        CustomerSession: polargo.Pointer(os.Getenv(\"POLAR_CUSTOMER_SESSION\")),\n    }, \"<value>\")\n    if err != nil {\n        log.Fatal(err)\n    }\n    if res.CustomerBenefitGrant != nil {\n        switch res.CustomerBenefitGrant.Type {\n            case components.CustomerBenefitGrantTypeCustomerBenefitGrantDiscord:\n                // res.CustomerBenefitGrant.CustomerBenefitGrantDiscord is populated\n            case components.CustomerBenefitGrantTypeCustomerBenefitGrantGitHubRepository:\n                // res.CustomerBenefitGrant.CustomerBenefitGrantGitHubRepository is populated\n            case components.CustomerBenefitGrantTypeCustomerBenefitGrantDownloadables:\n                // res.CustomerBenefitGrant.CustomerBenefitGrantDownloadables is populated\n            case components.CustomerBenefitGrantTypeCustomerBenefitGrantLicenseKeys:\n                // res.CustomerBenefitGrant.CustomerBenefitGrantLicenseKeys is populated\n            case components.CustomerBenefitGrantTypeCustomerBenefitGrantCustom:\n                // res.CustomerBenefitGrant.CustomerBenefitGrantCustom is populated\n            case components.CustomerBenefitGrantTypeCustomerBenefitGrantMeterCredit:\n                // res.CustomerBenefitGrant.CustomerBenefitGrantMeterCredit is populated\n            case components.CustomerBenefitGrantTypeCustomerBenefitGrantFeatureFlag:\n                // res.CustomerBenefitGrant.CustomerBenefitGrantFeatureFlag is populated\n        }\n\n    }\n}"
           },
           {
             "lang": "python",
@@ -12940,12 +12968,12 @@
           {
             "lang": "go",
             "label": "Go (SDK)",
-            "source": "package main\n\nimport(\n\t\"context\"\n\tpolargo \"github.com/polarsource/polar-go\"\n\t\"os\"\n\t\"github.com/polarsource/polar-go/models/operations\"\n\t\"github.com/polarsource/polar-go/models/components\"\n\t\"log\"\n)\n\nfunc main() {\n    ctx := context.Background()\n\n    s := polargo.New()\n\n    res, err := s.CustomerPortal.BenefitGrants.Update(ctx, operations.CustomerPortalBenefitGrantsUpdateSecurity{\n        CustomerSession: polargo.Pointer(os.Getenv(\"POLAR_CUSTOMER_SESSION\")),\n    }, \"<value>\", components.CreateCustomerBenefitGrantUpdateLicenseKeys(\n        components.CustomerBenefitGrantLicenseKeysUpdate{},\n    ))\n    if err != nil {\n        log.Fatal(err)\n    }\n    if res.CustomerBenefitGrant != nil {\n        switch res.CustomerBenefitGrant.Type {\n            case components.CustomerBenefitGrantTypeCustomerBenefitGrantDiscord:\n                // res.CustomerBenefitGrant.CustomerBenefitGrantDiscord is populated\n            case components.CustomerBenefitGrantTypeCustomerBenefitGrantGitHubRepository:\n                // res.CustomerBenefitGrant.CustomerBenefitGrantGitHubRepository is populated\n            case components.CustomerBenefitGrantTypeCustomerBenefitGrantDownloadables:\n                // res.CustomerBenefitGrant.CustomerBenefitGrantDownloadables is populated\n            case components.CustomerBenefitGrantTypeCustomerBenefitGrantLicenseKeys:\n                // res.CustomerBenefitGrant.CustomerBenefitGrantLicenseKeys is populated\n            case components.CustomerBenefitGrantTypeCustomerBenefitGrantCustom:\n                // res.CustomerBenefitGrant.CustomerBenefitGrantCustom is populated\n            case components.CustomerBenefitGrantTypeCustomerBenefitGrantMeterCredit:\n                // res.CustomerBenefitGrant.CustomerBenefitGrantMeterCredit is populated\n        }\n\n    }\n}"
+            "source": "package main\n\nimport(\n\t\"context\"\n\tpolargo \"github.com/polarsource/polar-go\"\n\t\"os\"\n\t\"github.com/polarsource/polar-go/models/operations\"\n\t\"github.com/polarsource/polar-go/models/components\"\n\t\"log\"\n)\n\nfunc main() {\n    ctx := context.Background()\n\n    s := polargo.New()\n\n    res, err := s.CustomerPortal.BenefitGrants.Update(ctx, operations.CustomerPortalBenefitGrantsUpdateSecurity{\n        CustomerSession: polargo.Pointer(os.Getenv(\"POLAR_CUSTOMER_SESSION\")),\n    }, \"<value>\", components.CreateCustomerBenefitGrantUpdateLicenseKeys(\n        components.CustomerBenefitGrantLicenseKeysUpdate{},\n    ))\n    if err != nil {\n        log.Fatal(err)\n    }\n    if res.CustomerBenefitGrant != nil {\n        switch res.CustomerBenefitGrant.Type {\n            case components.CustomerBenefitGrantTypeCustomerBenefitGrantDiscord:\n                // res.CustomerBenefitGrant.CustomerBenefitGrantDiscord is populated\n            case components.CustomerBenefitGrantTypeCustomerBenefitGrantGitHubRepository:\n                // res.CustomerBenefitGrant.CustomerBenefitGrantGitHubRepository is populated\n            case components.CustomerBenefitGrantTypeCustomerBenefitGrantDownloadables:\n                // res.CustomerBenefitGrant.CustomerBenefitGrantDownloadables is populated\n            case components.CustomerBenefitGrantTypeCustomerBenefitGrantLicenseKeys:\n                // res.CustomerBenefitGrant.CustomerBenefitGrantLicenseKeys is populated\n            case components.CustomerBenefitGrantTypeCustomerBenefitGrantCustom:\n                // res.CustomerBenefitGrant.CustomerBenefitGrantCustom is populated\n            case components.CustomerBenefitGrantTypeCustomerBenefitGrantMeterCredit:\n                // res.CustomerBenefitGrant.CustomerBenefitGrantMeterCredit is populated\n            case components.CustomerBenefitGrantTypeCustomerBenefitGrantFeatureFlag:\n                // res.CustomerBenefitGrant.CustomerBenefitGrantFeatureFlag is populated\n        }\n\n    }\n}"
           },
           {
             "lang": "python",
             "label": "Python (SDK)",
-            "source": "import polar_sdk\nfrom polar_sdk import Polar\n\n\nwith Polar() as polar:\n\n    res = polar.customer_portal.benefit_grants.update(security=polar_sdk.CustomerPortalBenefitGrantsUpdateSecurity(\n        customer_session=\"<YOUR_BEARER_TOKEN_HERE>\",\n    ), id=\"<value>\", customer_benefit_grant_update={\n        \"benefit_type\": \"license_keys\",\n    })\n\n    # Handle response\n    print(res)"
+            "source": "import polar_sdk\nfrom polar_sdk import Polar\n\n\nwith Polar() as polar:\n\n    res = polar.customer_portal.benefit_grants.update(security=polar_sdk.CustomerPortalBenefitGrantsUpdateSecurity(\n        customer_session=\"<YOUR_BEARER_TOKEN_HERE>\",\n    ), id=\"<value>\", customer_benefit_grant_update={\n        \"benefit_type\": \"github_repository\",\n        \"properties\": {\n            \"account_id\": \"<id>\",\n        },\n    })\n\n    # Handle response\n    print(res)"
           },
           {
             "lang": "typescript",
@@ -16866,6 +16894,16 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/CustomerSubscription"
+                }
+              }
+            }
+          },
+          "402": {
+            "description": "Payment required to apply the subscription update.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PaymentFailed"
                 }
               }
             }
@@ -30657,18 +30695,6 @@
             "title": "Max Seats",
             "description": "Maximum number of seats (works with seat-based pricing only)"
           },
-          "price_per_seat": {
-            "anyOf": [
-              {
-                "type": "integer"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Price Per Seat",
-            "description": "Price per seat in cents for the current seat count, based on the applicable tier. Only relevant for seat-based pricing."
-          },
           "discount_amount": {
             "type": "integer",
             "title": "Discount Amount",
@@ -31640,6 +31666,7 @@
           "amount": {
             "type": "integer",
             "title": "Amount",
+            "deprecated": true,
             "examples": [
               1000
             ]
@@ -31647,8 +31674,23 @@
           "currency": {
             "type": "string",
             "title": "Currency",
+            "deprecated": true,
             "examples": [
               "usd"
+            ]
+          },
+          "amounts": {
+            "additionalProperties": {
+              "type": "integer"
+            },
+            "type": "object",
+            "title": "Amounts",
+            "description": "Map of currency to fixed amount to discount from the total.",
+            "examples": [
+              {
+                "eur": 900,
+                "usd": 1000
+              }
             ]
           },
           "id": {
@@ -31679,6 +31721,7 @@
           "type",
           "amount",
           "currency",
+          "amounts",
           "id",
           "name",
           "code"
@@ -31701,6 +31744,7 @@
           "amount": {
             "type": "integer",
             "title": "Amount",
+            "deprecated": true,
             "examples": [
               1000
             ]
@@ -31708,8 +31752,23 @@
           "currency": {
             "type": "string",
             "title": "Currency",
+            "deprecated": true,
             "examples": [
               "usd"
+            ]
+          },
+          "amounts": {
+            "additionalProperties": {
+              "type": "integer"
+            },
+            "type": "object",
+            "title": "Amounts",
+            "description": "Map of currency to fixed amount to discount from the total.",
+            "examples": [
+              {
+                "eur": 900,
+                "usd": 1000
+              }
             ]
           },
           "id": {
@@ -31741,6 +31800,7 @@
           "type",
           "amount",
           "currency",
+          "amounts",
           "id",
           "name",
           "code"
@@ -34469,18 +34529,6 @@
             "title": "Max Seats",
             "description": "Maximum number of seats (works with seat-based pricing only)"
           },
-          "price_per_seat": {
-            "anyOf": [
-              {
-                "type": "integer"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Price Per Seat",
-            "description": "Price per seat in cents for the current seat count, based on the applicable tier. Only relevant for seat-based pricing."
-          },
           "discount_amount": {
             "type": "integer",
             "title": "Discount Amount",
@@ -35061,18 +35109,6 @@
             ],
             "title": "Max Seats",
             "description": "Maximum number of seats (works with seat-based pricing only)"
-          },
-          "price_per_seat": {
-            "anyOf": [
-              {
-                "type": "integer"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Price Per Seat",
-            "description": "Price per seat in cents for the current seat count, based on the applicable tier. Only relevant for seat-based pricing."
           },
           "discount_amount": {
             "type": "integer",
@@ -39729,27 +39765,7 @@
           "tax_id": {
             "anyOf": [
               {
-                "prefixItems": [
-                  {
-                    "type": "string"
-                  },
-                  {
-                    "$ref": "#/components/schemas/TaxIDFormat"
-                  }
-                ],
-                "type": "array",
-                "maxItems": 2,
-                "minItems": 2,
-                "examples": [
-                  [
-                    "911144442",
-                    "us_ein"
-                  ],
-                  [
-                    "FR61954506077",
-                    "eu_vat"
-                  ]
-                ]
+                "type": "string"
               },
               {
                 "type": "null"
@@ -40067,7 +40083,7 @@
             "title": "Consumed Units",
             "description": "The number of consumed units.",
             "examples": [
-              25
+              25.0
             ]
           },
           "credited_units": {
@@ -40083,7 +40099,7 @@
             "title": "Balance",
             "description": "The balance of the meter, i.e. the difference between credited and consumed units.",
             "examples": [
-              75
+              75.0
             ]
           },
           "meter": {
@@ -40429,7 +40445,7 @@
             "title": "Consumed Units",
             "description": "The number of consumed units.",
             "examples": [
-              25
+              25.0
             ]
           },
           "credited_units": {
@@ -40445,7 +40461,7 @@
             "title": "Balance",
             "description": "The balance of the meter, i.e. the difference between credited and consumed units.",
             "examples": [
-              75
+              75.0
             ]
           },
           "customer": {
@@ -42919,7 +42935,7 @@
             "title": "Consumed Units",
             "description": "The number of consumed units.",
             "examples": [
-              25
+              25.0
             ]
           },
           "credited_units": {
@@ -42935,7 +42951,7 @@
             "title": "Balance",
             "description": "The balance of the meter, i.e. the difference between credited and consumed units.",
             "examples": [
-              75
+              75.0
             ]
           }
         },
@@ -43239,7 +43255,7 @@
             "title": "Consumed Units",
             "description": "The number of consumed units so far in this billing period.",
             "examples": [
-              25
+              25.0
             ]
           },
           "credited_units": {
@@ -43533,6 +43549,17 @@
             "type": "array",
             "title": "Meters",
             "description": "List of meters associated with the subscription."
+          },
+          "pending_update": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/PendingSubscriptionUpdate"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Pending subscription update that will be applied at the beginning of the next period. If `null`, there is no pending update."
           }
         },
         "type": "object",
@@ -43562,7 +43589,8 @@
           "customer_cancellation_comment",
           "product",
           "prices",
-          "meters"
+          "meters",
+          "pending_update"
         ],
         "title": "CustomerSubscription"
       },
@@ -43639,7 +43667,7 @@
             "title": "Consumed Units",
             "description": "The number of consumed units so far in this billing period.",
             "examples": [
-              25
+              25.0
             ]
           },
           "credited_units": {
@@ -44046,27 +44074,7 @@
           "tax_id": {
             "anyOf": [
               {
-                "prefixItems": [
-                  {
-                    "type": "string"
-                  },
-                  {
-                    "$ref": "#/components/schemas/TaxIDFormat"
-                  }
-                ],
-                "type": "array",
-                "maxItems": 2,
-                "minItems": 2,
-                "examples": [
-                  [
-                    "911144442",
-                    "us_ein"
-                  ],
-                  [
-                    "FR61954506077",
-                    "eu_vat"
-                  ]
-                ]
+                "type": "string"
               },
               {
                 "type": "null"
@@ -44201,27 +44209,7 @@
           "tax_id": {
             "anyOf": [
               {
-                "prefixItems": [
-                  {
-                    "type": "string"
-                  },
-                  {
-                    "$ref": "#/components/schemas/TaxIDFormat"
-                  }
-                ],
-                "type": "array",
-                "maxItems": 2,
-                "minItems": 2,
-                "examples": [
-                  [
-                    "911144442",
-                    "us_ein"
-                  ],
-                  [
-                    "FR61954506077",
-                    "eu_vat"
-                  ]
-                ]
+                "type": "string"
               },
               {
                 "type": "null"
@@ -44643,6 +44631,7 @@
           "amount": {
             "type": "integer",
             "title": "Amount",
+            "deprecated": true,
             "examples": [
               1000
             ]
@@ -44650,8 +44639,23 @@
           "currency": {
             "type": "string",
             "title": "Currency",
+            "deprecated": true,
             "examples": [
               "usd"
+            ]
+          },
+          "amounts": {
+            "additionalProperties": {
+              "type": "integer"
+            },
+            "type": "object",
+            "title": "Amounts",
+            "description": "Map of currency to fixed amount to discount from the total.",
+            "examples": [
+              {
+                "eur": 900,
+                "usd": 1000
+              }
             ]
           },
           "created_at": {
@@ -44770,6 +44774,7 @@
           "type",
           "amount",
           "currency",
+          "amounts",
           "created_at",
           "modified_at",
           "id",
@@ -44797,6 +44802,7 @@
           "amount": {
             "type": "integer",
             "title": "Amount",
+            "deprecated": true,
             "examples": [
               1000
             ]
@@ -44804,8 +44810,23 @@
           "currency": {
             "type": "string",
             "title": "Currency",
+            "deprecated": true,
             "examples": [
               "usd"
+            ]
+          },
+          "amounts": {
+            "additionalProperties": {
+              "type": "integer"
+            },
+            "type": "object",
+            "title": "Amounts",
+            "description": "Map of currency to fixed amount to discount from the total.",
+            "examples": [
+              {
+                "eur": 900,
+                "usd": 1000
+              }
             ]
           },
           "created_at": {
@@ -44917,6 +44938,7 @@
           "type",
           "amount",
           "currency",
+          "amounts",
           "created_at",
           "modified_at",
           "id",
@@ -44941,16 +44963,54 @@
             "description": "Type of the discount."
           },
           "amount": {
-            "type": "integer",
-            "maximum": 999999999999,
-            "minimum": 0,
+            "anyOf": [
+              {
+                "type": "integer",
+                "maximum": 999999999999,
+                "minimum": 0,
+                "description": "Fixed amount to discount from the invoice total."
+              },
+              {
+                "type": "null"
+              }
+            ],
             "title": "Amount",
-            "description": "Fixed amount to discount from the invoice total."
+            "deprecated": true
           },
           "currency": {
-            "$ref": "#/components/schemas/PresentmentCurrency",
-            "description": "The currency of the fixed amount discount.",
-            "default": "usd"
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/PresentmentCurrency",
+                "description": "The currency of the fixed amount discount."
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": "usd",
+            "deprecated": true
+          },
+          "amounts": {
+            "anyOf": [
+              {
+                "additionalProperties": {
+                  "type": "integer",
+                  "maximum": 999999999999,
+                  "minimum": 0,
+                  "description": "Fixed amount to discount from the invoice total."
+                },
+                "propertyNames": {
+                  "$ref": "#/components/schemas/PresentmentCurrency"
+                },
+                "type": "object",
+                "minProperties": 1,
+                "description": "Map of currency to fixed amount to discount from the total. This allows specifying different discount amounts for different currencies."
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Amounts"
           },
           "metadata": {
             "additionalProperties": {
@@ -45080,7 +45140,6 @@
         "required": [
           "duration",
           "type",
-          "amount",
           "name"
         ],
         "title": "DiscountFixedOnceForeverDurationCreate",
@@ -45101,6 +45160,7 @@
           "amount": {
             "type": "integer",
             "title": "Amount",
+            "deprecated": true,
             "examples": [
               1000
             ]
@@ -45108,8 +45168,23 @@
           "currency": {
             "type": "string",
             "title": "Currency",
+            "deprecated": true,
             "examples": [
               "usd"
+            ]
+          },
+          "amounts": {
+            "additionalProperties": {
+              "type": "integer"
+            },
+            "type": "object",
+            "title": "Amounts",
+            "description": "Map of currency to fixed amount to discount from the total.",
+            "examples": [
+              {
+                "eur": 900,
+                "usd": 1000
+              }
             ]
           },
           "created_at": {
@@ -45229,6 +45304,7 @@
           "type",
           "amount",
           "currency",
+          "amounts",
           "created_at",
           "modified_at",
           "id",
@@ -45260,6 +45336,7 @@
           "amount": {
             "type": "integer",
             "title": "Amount",
+            "deprecated": true,
             "examples": [
               1000
             ]
@@ -45267,8 +45344,23 @@
           "currency": {
             "type": "string",
             "title": "Currency",
+            "deprecated": true,
             "examples": [
               "usd"
+            ]
+          },
+          "amounts": {
+            "additionalProperties": {
+              "type": "integer"
+            },
+            "type": "object",
+            "title": "Amounts",
+            "description": "Map of currency to fixed amount to discount from the total.",
+            "examples": [
+              {
+                "eur": 900,
+                "usd": 1000
+              }
             ]
           },
           "created_at": {
@@ -45381,6 +45473,7 @@
           "type",
           "amount",
           "currency",
+          "amounts",
           "created_at",
           "modified_at",
           "id",
@@ -45412,16 +45505,54 @@
             "description": "Type of the discount."
           },
           "amount": {
-            "type": "integer",
-            "maximum": 999999999999,
-            "minimum": 0,
+            "anyOf": [
+              {
+                "type": "integer",
+                "maximum": 999999999999,
+                "minimum": 0,
+                "description": "Fixed amount to discount from the invoice total."
+              },
+              {
+                "type": "null"
+              }
+            ],
             "title": "Amount",
-            "description": "Fixed amount to discount from the invoice total."
+            "deprecated": true
           },
           "currency": {
-            "$ref": "#/components/schemas/PresentmentCurrency",
-            "description": "The currency of the fixed amount discount.",
-            "default": "usd"
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/PresentmentCurrency",
+                "description": "The currency of the fixed amount discount."
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": "usd",
+            "deprecated": true
+          },
+          "amounts": {
+            "anyOf": [
+              {
+                "additionalProperties": {
+                  "type": "integer",
+                  "maximum": 999999999999,
+                  "minimum": 0,
+                  "description": "Fixed amount to discount from the invoice total."
+                },
+                "propertyNames": {
+                  "$ref": "#/components/schemas/PresentmentCurrency"
+                },
+                "type": "object",
+                "minProperties": 1,
+                "description": "Map of currency to fixed amount to discount from the total. This allows specifying different discount amounts for different currencies."
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Amounts"
           },
           "metadata": {
             "additionalProperties": {
@@ -45552,7 +45683,6 @@
           "duration",
           "duration_in_months",
           "type",
-          "amount",
           "name"
         ],
         "title": "DiscountFixedRepeatDurationCreate",
@@ -46590,7 +46720,9 @@
           "code",
           "-code",
           "redemptions_count",
-          "-redemptions_count"
+          "-redemptions_count",
+          "ends_at",
+          "-ends_at"
         ],
         "title": "DiscountSortProperty"
       },
@@ -46742,7 +46874,8 @@
                 "type": "null"
               }
             ],
-            "title": "Amount"
+            "title": "Amount",
+            "deprecated": true
           },
           "currency": {
             "anyOf": [
@@ -46753,7 +46886,30 @@
               {
                 "type": "null"
               }
-            ]
+            ],
+            "deprecated": true
+          },
+          "amounts": {
+            "anyOf": [
+              {
+                "additionalProperties": {
+                  "type": "integer",
+                  "maximum": 999999999999,
+                  "minimum": 0,
+                  "description": "Fixed amount to discount from the invoice total."
+                },
+                "propertyNames": {
+                  "$ref": "#/components/schemas/PresentmentCurrency"
+                },
+                "type": "object",
+                "minProperties": 1,
+                "description": "Map of currency to fixed amount to discount from the total. This allows specifying different discount amounts for different currencies."
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Amounts"
           },
           "basis_points": {
             "anyOf": [
@@ -51048,7 +51204,7 @@
             "title": "Total",
             "description": "The total quantity for the period.",
             "examples": [
-              100
+              100.0
             ]
           }
         },
@@ -51072,7 +51228,7 @@
             "title": "Quantity",
             "description": "The quantity for the current period.",
             "examples": [
-              10
+              10.0
             ]
           }
         },
@@ -51487,20 +51643,6 @@
             ],
             "title": "Succeeded Checkouts"
           },
-          "checkouts_conversion": {
-            "anyOf": [
-              {
-                "type": "integer"
-              },
-              {
-                "type": "number"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Checkouts Conversion"
-          },
           "churned_subscriptions": {
             "anyOf": [
               {
@@ -51514,6 +51656,20 @@
               }
             ],
             "title": "Churned Subscriptions"
+          },
+          "churn_rate": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Churn Rate"
           },
           "orders": {
             "anyOf": [
@@ -51921,7 +52077,7 @@
             ],
             "title": "Canceled Subscriptions Other"
           },
-          "churn_rate": {
+          "checkouts_conversion": {
             "anyOf": [
               {
                 "type": "integer"
@@ -51933,7 +52089,7 @@
                 "type": "null"
               }
             ],
-            "title": "Churn Rate"
+            "title": "Checkouts Conversion"
           },
           "ltv": {
             "anyOf": [
@@ -52080,7 +52236,7 @@
               }
             ]
           },
-          "checkouts_conversion": {
+          "churned_subscriptions": {
             "anyOf": [
               {
                 "$ref": "#/components/schemas/Metric"
@@ -52090,7 +52246,7 @@
               }
             ]
           },
-          "churned_subscriptions": {
+          "churn_rate": {
             "anyOf": [
               {
                 "$ref": "#/components/schemas/Metric"
@@ -52390,7 +52546,7 @@
               }
             ]
           },
-          "churn_rate": {
+          "checkouts_conversion": {
             "anyOf": [
               {
                 "$ref": "#/components/schemas/Metric"
@@ -52648,20 +52804,6 @@
             ],
             "title": "Succeeded Checkouts"
           },
-          "checkouts_conversion": {
-            "anyOf": [
-              {
-                "type": "integer"
-              },
-              {
-                "type": "number"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Checkouts Conversion"
-          },
           "churned_subscriptions": {
             "anyOf": [
               {
@@ -52675,6 +52817,20 @@
               }
             ],
             "title": "Churned Subscriptions"
+          },
+          "churn_rate": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Churn Rate"
           },
           "orders": {
             "anyOf": [
@@ -53082,7 +53238,7 @@
             ],
             "title": "Canceled Subscriptions Other"
           },
-          "churn_rate": {
+          "checkouts_conversion": {
             "anyOf": [
               {
                 "type": "integer"
@@ -53094,7 +53250,7 @@
                 "type": "null"
               }
             ],
-            "title": "Churn Rate"
+            "title": "Checkouts Conversion"
           },
           "ltv": {
             "anyOf": [
@@ -53977,6 +54133,7 @@
           "subscription_create",
           "subscription_cycle",
           "subscription_cycle_after_trial",
+          "subscription_cancel",
           "subscription_update"
         ],
         "title": "OrderBillingReasonInternal",
@@ -55286,7 +55443,7 @@
               }
             ],
             "title": "Details Submitted At",
-            "description": "When the business details were submitted."
+            "description": "When the business details were submitted for review."
           },
           "default_presentment_currency": {
             "type": "string",
@@ -55319,6 +55476,520 @@
           "customer_portal_settings": {
             "$ref": "#/components/schemas/OrganizationCustomerPortalSettings",
             "description": "Settings related to the customer portal"
+          },
+          "country": {
+            "anyOf": [
+              {
+                "type": "string",
+                "enum": [
+                  "AD",
+                  "AE",
+                  "AF",
+                  "AG",
+                  "AI",
+                  "AL",
+                  "AM",
+                  "AO",
+                  "AQ",
+                  "AR",
+                  "AS",
+                  "AT",
+                  "AU",
+                  "AW",
+                  "AX",
+                  "AZ",
+                  "BA",
+                  "BB",
+                  "BD",
+                  "BE",
+                  "BF",
+                  "BG",
+                  "BH",
+                  "BI",
+                  "BJ",
+                  "BL",
+                  "BM",
+                  "BN",
+                  "BO",
+                  "BQ",
+                  "BR",
+                  "BS",
+                  "BT",
+                  "BV",
+                  "BW",
+                  "BY",
+                  "BZ",
+                  "CA",
+                  "CC",
+                  "CD",
+                  "CF",
+                  "CG",
+                  "CH",
+                  "CI",
+                  "CK",
+                  "CL",
+                  "CM",
+                  "CN",
+                  "CO",
+                  "CR",
+                  "CU",
+                  "CV",
+                  "CW",
+                  "CX",
+                  "CY",
+                  "CZ",
+                  "DE",
+                  "DJ",
+                  "DK",
+                  "DM",
+                  "DO",
+                  "DZ",
+                  "EC",
+                  "EE",
+                  "EG",
+                  "EH",
+                  "ER",
+                  "ES",
+                  "ET",
+                  "FI",
+                  "FJ",
+                  "FK",
+                  "FM",
+                  "FO",
+                  "FR",
+                  "GA",
+                  "GB",
+                  "GD",
+                  "GE",
+                  "GF",
+                  "GG",
+                  "GH",
+                  "GI",
+                  "GL",
+                  "GM",
+                  "GN",
+                  "GP",
+                  "GQ",
+                  "GR",
+                  "GS",
+                  "GT",
+                  "GU",
+                  "GW",
+                  "GY",
+                  "HK",
+                  "HM",
+                  "HN",
+                  "HR",
+                  "HT",
+                  "HU",
+                  "ID",
+                  "IE",
+                  "IL",
+                  "IM",
+                  "IN",
+                  "IO",
+                  "IQ",
+                  "IR",
+                  "IS",
+                  "IT",
+                  "JE",
+                  "JM",
+                  "JO",
+                  "JP",
+                  "KE",
+                  "KG",
+                  "KH",
+                  "KI",
+                  "KM",
+                  "KN",
+                  "KP",
+                  "KR",
+                  "KW",
+                  "KY",
+                  "KZ",
+                  "LA",
+                  "LB",
+                  "LC",
+                  "LI",
+                  "LK",
+                  "LR",
+                  "LS",
+                  "LT",
+                  "LU",
+                  "LV",
+                  "LY",
+                  "MA",
+                  "MC",
+                  "MD",
+                  "ME",
+                  "MF",
+                  "MG",
+                  "MH",
+                  "MK",
+                  "ML",
+                  "MM",
+                  "MN",
+                  "MO",
+                  "MP",
+                  "MQ",
+                  "MR",
+                  "MS",
+                  "MT",
+                  "MU",
+                  "MV",
+                  "MW",
+                  "MX",
+                  "MY",
+                  "MZ",
+                  "NA",
+                  "NC",
+                  "NE",
+                  "NF",
+                  "NG",
+                  "NI",
+                  "NL",
+                  "NO",
+                  "NP",
+                  "NR",
+                  "NU",
+                  "NZ",
+                  "OM",
+                  "PA",
+                  "PE",
+                  "PF",
+                  "PG",
+                  "PH",
+                  "PK",
+                  "PL",
+                  "PM",
+                  "PN",
+                  "PR",
+                  "PS",
+                  "PT",
+                  "PW",
+                  "PY",
+                  "QA",
+                  "RE",
+                  "RO",
+                  "RS",
+                  "RU",
+                  "RW",
+                  "SA",
+                  "SB",
+                  "SC",
+                  "SD",
+                  "SE",
+                  "SG",
+                  "SH",
+                  "SI",
+                  "SJ",
+                  "SK",
+                  "SL",
+                  "SM",
+                  "SN",
+                  "SO",
+                  "SR",
+                  "SS",
+                  "ST",
+                  "SV",
+                  "SX",
+                  "SY",
+                  "SZ",
+                  "TC",
+                  "TD",
+                  "TF",
+                  "TG",
+                  "TH",
+                  "TJ",
+                  "TK",
+                  "TL",
+                  "TM",
+                  "TN",
+                  "TO",
+                  "TR",
+                  "TT",
+                  "TV",
+                  "TW",
+                  "TZ",
+                  "UA",
+                  "UG",
+                  "UM",
+                  "US",
+                  "UY",
+                  "UZ",
+                  "VA",
+                  "VC",
+                  "VE",
+                  "VG",
+                  "VI",
+                  "VN",
+                  "VU",
+                  "WF",
+                  "WS",
+                  "YE",
+                  "YT",
+                  "ZA",
+                  "ZM",
+                  "ZW"
+                ],
+                "title": "CountryAlpha2",
+                "x-speakeasy-enums": [
+                  "AD",
+                  "AE",
+                  "AF",
+                  "AG",
+                  "AI",
+                  "AL",
+                  "AM",
+                  "AO",
+                  "AQ",
+                  "AR",
+                  "AS",
+                  "AT",
+                  "AU",
+                  "AW",
+                  "AX",
+                  "AZ",
+                  "BA",
+                  "BB",
+                  "BD",
+                  "BE",
+                  "BF",
+                  "BG",
+                  "BH",
+                  "BI",
+                  "BJ",
+                  "BL",
+                  "BM",
+                  "BN",
+                  "BO",
+                  "BQ",
+                  "BR",
+                  "BS",
+                  "BT",
+                  "BV",
+                  "BW",
+                  "BY",
+                  "BZ",
+                  "CA",
+                  "CC",
+                  "CD",
+                  "CF",
+                  "CG",
+                  "CH",
+                  "CI",
+                  "CK",
+                  "CL",
+                  "CM",
+                  "CN",
+                  "CO",
+                  "CR",
+                  "CU",
+                  "CV",
+                  "CW",
+                  "CX",
+                  "CY",
+                  "CZ",
+                  "DE",
+                  "DJ",
+                  "DK",
+                  "DM",
+                  "DO",
+                  "DZ",
+                  "EC",
+                  "EE",
+                  "EG",
+                  "EH",
+                  "ER",
+                  "ES",
+                  "ET",
+                  "FI",
+                  "FJ",
+                  "FK",
+                  "FM",
+                  "FO",
+                  "FR",
+                  "GA",
+                  "GB",
+                  "GD",
+                  "GE",
+                  "GF",
+                  "GG",
+                  "GH",
+                  "GI",
+                  "GL",
+                  "GM",
+                  "GN",
+                  "GP",
+                  "GQ",
+                  "GR",
+                  "GS",
+                  "GT",
+                  "GU",
+                  "GW",
+                  "GY",
+                  "HK",
+                  "HM",
+                  "HN",
+                  "HR",
+                  "HT",
+                  "HU",
+                  "ID",
+                  "IE",
+                  "IL",
+                  "IM",
+                  "IN",
+                  "IO",
+                  "IQ",
+                  "IR",
+                  "IS",
+                  "IT",
+                  "JE",
+                  "JM",
+                  "JO",
+                  "JP",
+                  "KE",
+                  "KG",
+                  "KH",
+                  "KI",
+                  "KM",
+                  "KN",
+                  "KP",
+                  "KR",
+                  "KW",
+                  "KY",
+                  "KZ",
+                  "LA",
+                  "LB",
+                  "LC",
+                  "LI",
+                  "LK",
+                  "LR",
+                  "LS",
+                  "LT",
+                  "LU",
+                  "LV",
+                  "LY",
+                  "MA",
+                  "MC",
+                  "MD",
+                  "ME",
+                  "MF",
+                  "MG",
+                  "MH",
+                  "MK",
+                  "ML",
+                  "MM",
+                  "MN",
+                  "MO",
+                  "MP",
+                  "MQ",
+                  "MR",
+                  "MS",
+                  "MT",
+                  "MU",
+                  "MV",
+                  "MW",
+                  "MX",
+                  "MY",
+                  "MZ",
+                  "NA",
+                  "NC",
+                  "NE",
+                  "NF",
+                  "NG",
+                  "NI",
+                  "NL",
+                  "NO",
+                  "NP",
+                  "NR",
+                  "NU",
+                  "NZ",
+                  "OM",
+                  "PA",
+                  "PE",
+                  "PF",
+                  "PG",
+                  "PH",
+                  "PK",
+                  "PL",
+                  "PM",
+                  "PN",
+                  "PR",
+                  "PS",
+                  "PT",
+                  "PW",
+                  "PY",
+                  "QA",
+                  "RE",
+                  "RO",
+                  "RS",
+                  "RU",
+                  "RW",
+                  "SA",
+                  "SB",
+                  "SC",
+                  "SD",
+                  "SE",
+                  "SG",
+                  "SH",
+                  "SI",
+                  "SJ",
+                  "SK",
+                  "SL",
+                  "SM",
+                  "SN",
+                  "SO",
+                  "SR",
+                  "SS",
+                  "ST",
+                  "SV",
+                  "SX",
+                  "SY",
+                  "SZ",
+                  "TC",
+                  "TD",
+                  "TF",
+                  "TG",
+                  "TH",
+                  "TJ",
+                  "TK",
+                  "TL",
+                  "TM",
+                  "TN",
+                  "TO",
+                  "TR",
+                  "TT",
+                  "TV",
+                  "TW",
+                  "TZ",
+                  "UA",
+                  "UG",
+                  "UM",
+                  "US",
+                  "UY",
+                  "UZ",
+                  "VA",
+                  "VC",
+                  "VE",
+                  "VG",
+                  "VI",
+                  "VN",
+                  "VU",
+                  "WF",
+                  "WS",
+                  "YE",
+                  "YT",
+                  "ZA",
+                  "ZM",
+                  "ZW"
+                ]
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Two-letter country code (ISO 3166-1 alpha-2)."
           }
         },
         "type": "object",
@@ -55764,6 +56435,25 @@
         "title": "OrganizationAvatarFileRead",
         "description": "File to be used as an organization avatar."
       },
+      "OrganizationCompanyLegalEntitySchema": {
+        "properties": {
+          "type": {
+            "type": "string",
+            "const": "company",
+            "title": "Type"
+          },
+          "registered_name": {
+            "type": "string",
+            "title": "Registered Name"
+          }
+        },
+        "type": "object",
+        "required": [
+          "type",
+          "registered_name"
+        ],
+        "title": "OrganizationCompanyLegalEntitySchema"
+      },
       "OrganizationCreate": {
         "properties": {
           "name": {
@@ -55789,6 +56479,31 @@
               }
             ],
             "title": "Avatar Url"
+          },
+          "legal_entity": {
+            "anyOf": [
+              {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/OrganizationIndividualLegalEntitySchema"
+                  },
+                  {
+                    "$ref": "#/components/schemas/OrganizationCompanyLegalEntitySchema"
+                  }
+                ],
+                "discriminator": {
+                  "propertyName": "type",
+                  "mapping": {
+                    "company": "#/components/schemas/OrganizationCompanyLegalEntitySchema",
+                    "individual": "#/components/schemas/OrganizationIndividualLegalEntitySchema"
+                  }
+                }
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Legal Entity"
           },
           "email": {
             "anyOf": [
@@ -55843,6 +56558,510 @@
               }
             ],
             "description": "Additional, private, business details Polar needs about active organizations for compliance (KYC)."
+          },
+          "country": {
+            "anyOf": [
+              {
+                "type": "string",
+                "enum": [
+                  "AD",
+                  "AE",
+                  "AF",
+                  "AG",
+                  "AI",
+                  "AL",
+                  "AM",
+                  "AO",
+                  "AQ",
+                  "AR",
+                  "AS",
+                  "AT",
+                  "AU",
+                  "AW",
+                  "AX",
+                  "AZ",
+                  "BA",
+                  "BB",
+                  "BD",
+                  "BE",
+                  "BF",
+                  "BG",
+                  "BH",
+                  "BI",
+                  "BJ",
+                  "BL",
+                  "BM",
+                  "BN",
+                  "BO",
+                  "BQ",
+                  "BR",
+                  "BS",
+                  "BT",
+                  "BV",
+                  "BW",
+                  "BY",
+                  "BZ",
+                  "CA",
+                  "CC",
+                  "CD",
+                  "CF",
+                  "CG",
+                  "CH",
+                  "CI",
+                  "CK",
+                  "CL",
+                  "CM",
+                  "CN",
+                  "CO",
+                  "CR",
+                  "CV",
+                  "CW",
+                  "CX",
+                  "CY",
+                  "CZ",
+                  "DE",
+                  "DJ",
+                  "DK",
+                  "DM",
+                  "DO",
+                  "DZ",
+                  "EC",
+                  "EE",
+                  "EG",
+                  "EH",
+                  "ER",
+                  "ES",
+                  "ET",
+                  "FI",
+                  "FJ",
+                  "FK",
+                  "FM",
+                  "FO",
+                  "FR",
+                  "GA",
+                  "GB",
+                  "GD",
+                  "GE",
+                  "GF",
+                  "GG",
+                  "GH",
+                  "GI",
+                  "GL",
+                  "GM",
+                  "GN",
+                  "GP",
+                  "GQ",
+                  "GR",
+                  "GS",
+                  "GT",
+                  "GU",
+                  "GW",
+                  "GY",
+                  "HK",
+                  "HM",
+                  "HN",
+                  "HR",
+                  "HT",
+                  "HU",
+                  "ID",
+                  "IE",
+                  "IL",
+                  "IM",
+                  "IN",
+                  "IO",
+                  "IQ",
+                  "IS",
+                  "IT",
+                  "JE",
+                  "JM",
+                  "JO",
+                  "JP",
+                  "KE",
+                  "KG",
+                  "KH",
+                  "KI",
+                  "KM",
+                  "KN",
+                  "KR",
+                  "KW",
+                  "KY",
+                  "KZ",
+                  "LA",
+                  "LB",
+                  "LC",
+                  "LI",
+                  "LK",
+                  "LR",
+                  "LS",
+                  "LT",
+                  "LU",
+                  "LV",
+                  "LY",
+                  "MA",
+                  "MC",
+                  "MD",
+                  "ME",
+                  "MF",
+                  "MG",
+                  "MH",
+                  "MK",
+                  "ML",
+                  "MM",
+                  "MN",
+                  "MO",
+                  "MP",
+                  "MQ",
+                  "MR",
+                  "MS",
+                  "MT",
+                  "MU",
+                  "MV",
+                  "MW",
+                  "MX",
+                  "MY",
+                  "MZ",
+                  "NA",
+                  "NC",
+                  "NE",
+                  "NF",
+                  "NG",
+                  "NI",
+                  "NL",
+                  "NO",
+                  "NP",
+                  "NR",
+                  "NU",
+                  "NZ",
+                  "OM",
+                  "PA",
+                  "PE",
+                  "PF",
+                  "PG",
+                  "PH",
+                  "PK",
+                  "PL",
+                  "PM",
+                  "PN",
+                  "PR",
+                  "PS",
+                  "PT",
+                  "PW",
+                  "PY",
+                  "QA",
+                  "RE",
+                  "RO",
+                  "RS",
+                  "RW",
+                  "SA",
+                  "SB",
+                  "SC",
+                  "SD",
+                  "SE",
+                  "SG",
+                  "SH",
+                  "SI",
+                  "SJ",
+                  "SK",
+                  "SL",
+                  "SM",
+                  "SN",
+                  "SO",
+                  "SR",
+                  "SS",
+                  "ST",
+                  "SV",
+                  "SX",
+                  "SZ",
+                  "TC",
+                  "TD",
+                  "TF",
+                  "TG",
+                  "TH",
+                  "TJ",
+                  "TK",
+                  "TL",
+                  "TM",
+                  "TN",
+                  "TO",
+                  "TR",
+                  "TT",
+                  "TV",
+                  "TW",
+                  "TZ",
+                  "UA",
+                  "UG",
+                  "UM",
+                  "US",
+                  "UY",
+                  "UZ",
+                  "VA",
+                  "VC",
+                  "VE",
+                  "VG",
+                  "VI",
+                  "VN",
+                  "VU",
+                  "WF",
+                  "WS",
+                  "YE",
+                  "YT",
+                  "ZA",
+                  "ZM",
+                  "ZW"
+                ],
+                "title": "CountryAlpha2Input",
+                "x-speakeasy-enums": [
+                  "AD",
+                  "AE",
+                  "AF",
+                  "AG",
+                  "AI",
+                  "AL",
+                  "AM",
+                  "AO",
+                  "AQ",
+                  "AR",
+                  "AS",
+                  "AT",
+                  "AU",
+                  "AW",
+                  "AX",
+                  "AZ",
+                  "BA",
+                  "BB",
+                  "BD",
+                  "BE",
+                  "BF",
+                  "BG",
+                  "BH",
+                  "BI",
+                  "BJ",
+                  "BL",
+                  "BM",
+                  "BN",
+                  "BO",
+                  "BQ",
+                  "BR",
+                  "BS",
+                  "BT",
+                  "BV",
+                  "BW",
+                  "BY",
+                  "BZ",
+                  "CA",
+                  "CC",
+                  "CD",
+                  "CF",
+                  "CG",
+                  "CH",
+                  "CI",
+                  "CK",
+                  "CL",
+                  "CM",
+                  "CN",
+                  "CO",
+                  "CR",
+                  "CV",
+                  "CW",
+                  "CX",
+                  "CY",
+                  "CZ",
+                  "DE",
+                  "DJ",
+                  "DK",
+                  "DM",
+                  "DO",
+                  "DZ",
+                  "EC",
+                  "EE",
+                  "EG",
+                  "EH",
+                  "ER",
+                  "ES",
+                  "ET",
+                  "FI",
+                  "FJ",
+                  "FK",
+                  "FM",
+                  "FO",
+                  "FR",
+                  "GA",
+                  "GB",
+                  "GD",
+                  "GE",
+                  "GF",
+                  "GG",
+                  "GH",
+                  "GI",
+                  "GL",
+                  "GM",
+                  "GN",
+                  "GP",
+                  "GQ",
+                  "GR",
+                  "GS",
+                  "GT",
+                  "GU",
+                  "GW",
+                  "GY",
+                  "HK",
+                  "HM",
+                  "HN",
+                  "HR",
+                  "HT",
+                  "HU",
+                  "ID",
+                  "IE",
+                  "IL",
+                  "IM",
+                  "IN",
+                  "IO",
+                  "IQ",
+                  "IS",
+                  "IT",
+                  "JE",
+                  "JM",
+                  "JO",
+                  "JP",
+                  "KE",
+                  "KG",
+                  "KH",
+                  "KI",
+                  "KM",
+                  "KN",
+                  "KR",
+                  "KW",
+                  "KY",
+                  "KZ",
+                  "LA",
+                  "LB",
+                  "LC",
+                  "LI",
+                  "LK",
+                  "LR",
+                  "LS",
+                  "LT",
+                  "LU",
+                  "LV",
+                  "LY",
+                  "MA",
+                  "MC",
+                  "MD",
+                  "ME",
+                  "MF",
+                  "MG",
+                  "MH",
+                  "MK",
+                  "ML",
+                  "MM",
+                  "MN",
+                  "MO",
+                  "MP",
+                  "MQ",
+                  "MR",
+                  "MS",
+                  "MT",
+                  "MU",
+                  "MV",
+                  "MW",
+                  "MX",
+                  "MY",
+                  "MZ",
+                  "NA",
+                  "NC",
+                  "NE",
+                  "NF",
+                  "NG",
+                  "NI",
+                  "NL",
+                  "NO",
+                  "NP",
+                  "NR",
+                  "NU",
+                  "NZ",
+                  "OM",
+                  "PA",
+                  "PE",
+                  "PF",
+                  "PG",
+                  "PH",
+                  "PK",
+                  "PL",
+                  "PM",
+                  "PN",
+                  "PR",
+                  "PS",
+                  "PT",
+                  "PW",
+                  "PY",
+                  "QA",
+                  "RE",
+                  "RO",
+                  "RS",
+                  "RW",
+                  "SA",
+                  "SB",
+                  "SC",
+                  "SD",
+                  "SE",
+                  "SG",
+                  "SH",
+                  "SI",
+                  "SJ",
+                  "SK",
+                  "SL",
+                  "SM",
+                  "SN",
+                  "SO",
+                  "SR",
+                  "SS",
+                  "ST",
+                  "SV",
+                  "SX",
+                  "SZ",
+                  "TC",
+                  "TD",
+                  "TF",
+                  "TG",
+                  "TH",
+                  "TJ",
+                  "TK",
+                  "TL",
+                  "TM",
+                  "TN",
+                  "TO",
+                  "TR",
+                  "TT",
+                  "TV",
+                  "TW",
+                  "TZ",
+                  "UA",
+                  "UG",
+                  "UM",
+                  "US",
+                  "UY",
+                  "UZ",
+                  "VA",
+                  "VC",
+                  "VE",
+                  "VG",
+                  "VI",
+                  "VN",
+                  "VU",
+                  "WF",
+                  "WS",
+                  "YE",
+                  "YT",
+                  "ZA",
+                  "ZM",
+                  "ZW"
+                ]
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Two-letter country code (ISO 3166-1 alpha-2)."
           },
           "feature_settings": {
             "anyOf": [
@@ -55933,9 +57152,17 @@
             "type": "boolean",
             "title": "Subscription Past Due"
           },
+          "subscription_renewal_reminder": {
+            "type": "boolean",
+            "title": "Subscription Renewal Reminder"
+          },
           "subscription_revoked": {
             "type": "boolean",
             "title": "Subscription Revoked"
+          },
+          "subscription_trial_conversion_reminder": {
+            "type": "boolean",
+            "title": "Subscription Trial Conversion Reminder"
           },
           "subscription_uncanceled": {
             "type": "boolean",
@@ -55954,7 +57181,9 @@
           "subscription_cycled",
           "subscription_cycled_after_trial",
           "subscription_past_due",
+          "subscription_renewal_reminder",
           "subscription_revoked",
+          "subscription_trial_conversion_reminder",
           "subscription_uncanceled",
           "subscription_updated"
         ],
@@ -55979,19 +57208,58 @@
       "OrganizationDetails": {
         "properties": {
           "about": {
-            "type": "string",
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
             "title": "About",
-            "description": "Brief information about you and your business."
+            "description": "Brief information about you and your business.",
+            "deprecated": true
           },
           "product_description": {
-            "type": "string",
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
             "title": "Product Description",
             "description": "Description of digital products being sold."
           },
+          "selling_categories": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Selling Categories",
+            "description": "Categories of products being sold."
+          },
+          "pricing_models": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Pricing Models",
+            "description": "Pricing models used by the organization."
+          },
           "intended_use": {
-            "type": "string",
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
             "title": "Intended Use",
-            "description": "How the organization will integrate and use Polar."
+            "description": "How the organization will integrate and use Polar.",
+            "deprecated": true
           },
           "customer_acquisition": {
             "items": {
@@ -55999,19 +57267,28 @@
             },
             "type": "array",
             "title": "Customer Acquisition",
-            "description": "Main customer acquisition channels."
+            "description": "Main customer acquisition channels.",
+            "deprecated": true
           },
           "future_annual_revenue": {
-            "type": "integer",
-            "minimum": 0,
+            "anyOf": [
+              {
+                "type": "integer",
+                "minimum": 0
+              },
+              {
+                "type": "null"
+              }
+            ],
             "title": "Future Annual Revenue",
-            "description": "Estimated revenue in the next 12 months"
+            "description": "Estimated revenue in the next 12 months",
+            "deprecated": true
           },
           "switching": {
             "type": "boolean",
             "title": "Switching",
             "description": "Switching from another platform?",
-            "default": true
+            "default": false
           },
           "switching_from": {
             "anyOf": [
@@ -56033,21 +57310,21 @@
             "description": "Which platform the organization is migrating from."
           },
           "previous_annual_revenue": {
-            "type": "integer",
-            "minimum": 0,
+            "anyOf": [
+              {
+                "type": "integer",
+                "minimum": 0
+              },
+              {
+                "type": "null"
+              }
+            ],
             "title": "Previous Annual Revenue",
             "description": "Revenue from last year if applicable.",
-            "default": 0
+            "deprecated": true
           }
         },
         "type": "object",
-        "required": [
-          "about",
-          "product_description",
-          "intended_use",
-          "customer_acquisition",
-          "future_annual_revenue"
-        ],
         "title": "OrganizationDetails"
       },
       "OrganizationFeatureSettings": {
@@ -56118,6 +57395,20 @@
         },
         "type": "object",
         "title": "OrganizationFeatureSettings"
+      },
+      "OrganizationIndividualLegalEntitySchema": {
+        "properties": {
+          "type": {
+            "type": "string",
+            "const": "individual",
+            "title": "Type"
+          }
+        },
+        "type": "object",
+        "required": [
+          "type"
+        ],
+        "title": "OrganizationIndividualLegalEntitySchema"
       },
       "OrganizationNotificationSettings": {
         "properties": {
@@ -56317,6 +57608,510 @@
             ],
             "description": "Additional, private, business details Polar needs about active organizations for compliance (KYC)."
           },
+          "country": {
+            "anyOf": [
+              {
+                "type": "string",
+                "enum": [
+                  "AD",
+                  "AE",
+                  "AF",
+                  "AG",
+                  "AI",
+                  "AL",
+                  "AM",
+                  "AO",
+                  "AQ",
+                  "AR",
+                  "AS",
+                  "AT",
+                  "AU",
+                  "AW",
+                  "AX",
+                  "AZ",
+                  "BA",
+                  "BB",
+                  "BD",
+                  "BE",
+                  "BF",
+                  "BG",
+                  "BH",
+                  "BI",
+                  "BJ",
+                  "BL",
+                  "BM",
+                  "BN",
+                  "BO",
+                  "BQ",
+                  "BR",
+                  "BS",
+                  "BT",
+                  "BV",
+                  "BW",
+                  "BY",
+                  "BZ",
+                  "CA",
+                  "CC",
+                  "CD",
+                  "CF",
+                  "CG",
+                  "CH",
+                  "CI",
+                  "CK",
+                  "CL",
+                  "CM",
+                  "CN",
+                  "CO",
+                  "CR",
+                  "CV",
+                  "CW",
+                  "CX",
+                  "CY",
+                  "CZ",
+                  "DE",
+                  "DJ",
+                  "DK",
+                  "DM",
+                  "DO",
+                  "DZ",
+                  "EC",
+                  "EE",
+                  "EG",
+                  "EH",
+                  "ER",
+                  "ES",
+                  "ET",
+                  "FI",
+                  "FJ",
+                  "FK",
+                  "FM",
+                  "FO",
+                  "FR",
+                  "GA",
+                  "GB",
+                  "GD",
+                  "GE",
+                  "GF",
+                  "GG",
+                  "GH",
+                  "GI",
+                  "GL",
+                  "GM",
+                  "GN",
+                  "GP",
+                  "GQ",
+                  "GR",
+                  "GS",
+                  "GT",
+                  "GU",
+                  "GW",
+                  "GY",
+                  "HK",
+                  "HM",
+                  "HN",
+                  "HR",
+                  "HT",
+                  "HU",
+                  "ID",
+                  "IE",
+                  "IL",
+                  "IM",
+                  "IN",
+                  "IO",
+                  "IQ",
+                  "IS",
+                  "IT",
+                  "JE",
+                  "JM",
+                  "JO",
+                  "JP",
+                  "KE",
+                  "KG",
+                  "KH",
+                  "KI",
+                  "KM",
+                  "KN",
+                  "KR",
+                  "KW",
+                  "KY",
+                  "KZ",
+                  "LA",
+                  "LB",
+                  "LC",
+                  "LI",
+                  "LK",
+                  "LR",
+                  "LS",
+                  "LT",
+                  "LU",
+                  "LV",
+                  "LY",
+                  "MA",
+                  "MC",
+                  "MD",
+                  "ME",
+                  "MF",
+                  "MG",
+                  "MH",
+                  "MK",
+                  "ML",
+                  "MM",
+                  "MN",
+                  "MO",
+                  "MP",
+                  "MQ",
+                  "MR",
+                  "MS",
+                  "MT",
+                  "MU",
+                  "MV",
+                  "MW",
+                  "MX",
+                  "MY",
+                  "MZ",
+                  "NA",
+                  "NC",
+                  "NE",
+                  "NF",
+                  "NG",
+                  "NI",
+                  "NL",
+                  "NO",
+                  "NP",
+                  "NR",
+                  "NU",
+                  "NZ",
+                  "OM",
+                  "PA",
+                  "PE",
+                  "PF",
+                  "PG",
+                  "PH",
+                  "PK",
+                  "PL",
+                  "PM",
+                  "PN",
+                  "PR",
+                  "PS",
+                  "PT",
+                  "PW",
+                  "PY",
+                  "QA",
+                  "RE",
+                  "RO",
+                  "RS",
+                  "RW",
+                  "SA",
+                  "SB",
+                  "SC",
+                  "SD",
+                  "SE",
+                  "SG",
+                  "SH",
+                  "SI",
+                  "SJ",
+                  "SK",
+                  "SL",
+                  "SM",
+                  "SN",
+                  "SO",
+                  "SR",
+                  "SS",
+                  "ST",
+                  "SV",
+                  "SX",
+                  "SZ",
+                  "TC",
+                  "TD",
+                  "TF",
+                  "TG",
+                  "TH",
+                  "TJ",
+                  "TK",
+                  "TL",
+                  "TM",
+                  "TN",
+                  "TO",
+                  "TR",
+                  "TT",
+                  "TV",
+                  "TW",
+                  "TZ",
+                  "UA",
+                  "UG",
+                  "UM",
+                  "US",
+                  "UY",
+                  "UZ",
+                  "VA",
+                  "VC",
+                  "VE",
+                  "VG",
+                  "VI",
+                  "VN",
+                  "VU",
+                  "WF",
+                  "WS",
+                  "YE",
+                  "YT",
+                  "ZA",
+                  "ZM",
+                  "ZW"
+                ],
+                "title": "CountryAlpha2Input",
+                "x-speakeasy-enums": [
+                  "AD",
+                  "AE",
+                  "AF",
+                  "AG",
+                  "AI",
+                  "AL",
+                  "AM",
+                  "AO",
+                  "AQ",
+                  "AR",
+                  "AS",
+                  "AT",
+                  "AU",
+                  "AW",
+                  "AX",
+                  "AZ",
+                  "BA",
+                  "BB",
+                  "BD",
+                  "BE",
+                  "BF",
+                  "BG",
+                  "BH",
+                  "BI",
+                  "BJ",
+                  "BL",
+                  "BM",
+                  "BN",
+                  "BO",
+                  "BQ",
+                  "BR",
+                  "BS",
+                  "BT",
+                  "BV",
+                  "BW",
+                  "BY",
+                  "BZ",
+                  "CA",
+                  "CC",
+                  "CD",
+                  "CF",
+                  "CG",
+                  "CH",
+                  "CI",
+                  "CK",
+                  "CL",
+                  "CM",
+                  "CN",
+                  "CO",
+                  "CR",
+                  "CV",
+                  "CW",
+                  "CX",
+                  "CY",
+                  "CZ",
+                  "DE",
+                  "DJ",
+                  "DK",
+                  "DM",
+                  "DO",
+                  "DZ",
+                  "EC",
+                  "EE",
+                  "EG",
+                  "EH",
+                  "ER",
+                  "ES",
+                  "ET",
+                  "FI",
+                  "FJ",
+                  "FK",
+                  "FM",
+                  "FO",
+                  "FR",
+                  "GA",
+                  "GB",
+                  "GD",
+                  "GE",
+                  "GF",
+                  "GG",
+                  "GH",
+                  "GI",
+                  "GL",
+                  "GM",
+                  "GN",
+                  "GP",
+                  "GQ",
+                  "GR",
+                  "GS",
+                  "GT",
+                  "GU",
+                  "GW",
+                  "GY",
+                  "HK",
+                  "HM",
+                  "HN",
+                  "HR",
+                  "HT",
+                  "HU",
+                  "ID",
+                  "IE",
+                  "IL",
+                  "IM",
+                  "IN",
+                  "IO",
+                  "IQ",
+                  "IS",
+                  "IT",
+                  "JE",
+                  "JM",
+                  "JO",
+                  "JP",
+                  "KE",
+                  "KG",
+                  "KH",
+                  "KI",
+                  "KM",
+                  "KN",
+                  "KR",
+                  "KW",
+                  "KY",
+                  "KZ",
+                  "LA",
+                  "LB",
+                  "LC",
+                  "LI",
+                  "LK",
+                  "LR",
+                  "LS",
+                  "LT",
+                  "LU",
+                  "LV",
+                  "LY",
+                  "MA",
+                  "MC",
+                  "MD",
+                  "ME",
+                  "MF",
+                  "MG",
+                  "MH",
+                  "MK",
+                  "ML",
+                  "MM",
+                  "MN",
+                  "MO",
+                  "MP",
+                  "MQ",
+                  "MR",
+                  "MS",
+                  "MT",
+                  "MU",
+                  "MV",
+                  "MW",
+                  "MX",
+                  "MY",
+                  "MZ",
+                  "NA",
+                  "NC",
+                  "NE",
+                  "NF",
+                  "NG",
+                  "NI",
+                  "NL",
+                  "NO",
+                  "NP",
+                  "NR",
+                  "NU",
+                  "NZ",
+                  "OM",
+                  "PA",
+                  "PE",
+                  "PF",
+                  "PG",
+                  "PH",
+                  "PK",
+                  "PL",
+                  "PM",
+                  "PN",
+                  "PR",
+                  "PS",
+                  "PT",
+                  "PW",
+                  "PY",
+                  "QA",
+                  "RE",
+                  "RO",
+                  "RS",
+                  "RW",
+                  "SA",
+                  "SB",
+                  "SC",
+                  "SD",
+                  "SE",
+                  "SG",
+                  "SH",
+                  "SI",
+                  "SJ",
+                  "SK",
+                  "SL",
+                  "SM",
+                  "SN",
+                  "SO",
+                  "SR",
+                  "SS",
+                  "ST",
+                  "SV",
+                  "SX",
+                  "SZ",
+                  "TC",
+                  "TD",
+                  "TF",
+                  "TG",
+                  "TH",
+                  "TJ",
+                  "TK",
+                  "TL",
+                  "TM",
+                  "TN",
+                  "TO",
+                  "TR",
+                  "TT",
+                  "TV",
+                  "TW",
+                  "TZ",
+                  "UA",
+                  "UG",
+                  "UM",
+                  "US",
+                  "UY",
+                  "UZ",
+                  "VA",
+                  "VC",
+                  "VE",
+                  "VG",
+                  "VI",
+                  "VN",
+                  "VU",
+                  "WF",
+                  "WS",
+                  "YE",
+                  "YT",
+                  "ZA",
+                  "ZM",
+                  "ZW"
+                ]
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Two-letter country code (ISO 3166-1 alpha-2)."
+          },
           "feature_settings": {
             "anyOf": [
               {
@@ -56507,6 +58302,28 @@
           "detail"
         ],
         "title": "PaymentError"
+      },
+      "PaymentFailed": {
+        "properties": {
+          "error": {
+            "type": "string",
+            "const": "PaymentFailed",
+            "title": "Error",
+            "examples": [
+              "PaymentFailed"
+            ]
+          },
+          "detail": {
+            "type": "string",
+            "title": "Detail"
+          }
+        },
+        "type": "object",
+        "required": [
+          "error",
+          "detail"
+        ],
+        "title": "PaymentFailed"
       },
       "PaymentMethodCard": {
         "properties": {
@@ -56728,6 +58545,77 @@
         ],
         "title": "PaymentStatus"
       },
+      "PendingSubscriptionUpdate": {
+        "properties": {
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Created At",
+            "description": "Creation timestamp of the object."
+          },
+          "modified_at": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date-time"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Modified At",
+            "description": "Last modification timestamp of the object."
+          },
+          "id": {
+            "type": "string",
+            "format": "uuid4",
+            "title": "Id",
+            "description": "The ID of the object."
+          },
+          "applies_at": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Applies At",
+            "description": "The date and time when the subscription update will be applied."
+          },
+          "product_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid4"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Product Id",
+            "description": "ID of the new product to apply to the subscription. If `null`, the product won't be changed."
+          },
+          "seats": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Seats",
+            "description": "Number of seats to apply to the subscription. If `null`, the number of seats won't be changed."
+          }
+        },
+        "type": "object",
+        "required": [
+          "created_at",
+          "modified_at",
+          "id",
+          "applies_at",
+          "product_id",
+          "seats"
+        ],
+        "title": "PendingSubscriptionUpdate",
+        "description": "Pending update to be applied to a subscription at the beginning of the next period."
+      },
       "PortalAuthenticatedUser": {
         "properties": {
           "type": {
@@ -56797,16 +58685,42 @@
       "PresentmentCurrency": {
         "type": "string",
         "enum": [
+          "aed",
+          "ars",
           "aud",
           "brl",
           "cad",
           "chf",
+          "clp",
+          "cny",
+          "cop",
+          "czk",
+          "dkk",
           "eur",
-          "inr",
           "gbp",
+          "hkd",
+          "huf",
+          "idr",
+          "ils",
+          "inr",
           "jpy",
+          "krw",
+          "mxn",
+          "myr",
+          "nok",
+          "nzd",
+          "pen",
+          "php",
+          "pln",
+          "ron",
+          "sar",
           "sek",
-          "usd"
+          "sgd",
+          "thb",
+          "try",
+          "twd",
+          "usd",
+          "zar"
         ],
         "title": "PresentmentCurrency"
       },
@@ -57022,7 +58936,7 @@
         "title": "ProductBillingType"
       },
       "ProductCreate": {
-        "anyOf": [
+        "oneOf": [
           {
             "$ref": "#/components/schemas/ProductCreateRecurring"
           },
@@ -57400,7 +59314,7 @@
           },
           "size": {
             "type": "integer",
-            "maximum": 10485760,
+            "maximum": 1.048576E+7,
             "title": "Size",
             "description": "Size of the file. A maximum of 10 MB is allowed for this type of file."
           },
@@ -57739,9 +59653,9 @@
             "anyOf": [
               {
                 "type": "integer",
-                "maximum": 1000000,
-                "minimum": 50,
-                "description": "The price in cents."
+                "maximum": 1E+6,
+                "minimum": 10,
+                "description": "The price in cents.\nMinimum amounts per currency:\n- USD: $0.50\n- AED: AED2.00\n- ARS: ARS0.50\n- AUD: A$0.50\n- BRL: R$0.50\n- CAD: CA$0.50\n- CHF: CHF0.50\n- COP: COP0.50\n- CZK: CZK15.00\n- DKK: DKK2.50\n- EUR: €0.50\n- GBP: £0.30\n- HKD: HK$4.00\n- HUF: HUF175.00\n- IDR: IDR0.50\n- ILS: ₪0.50\n- INR: ₹60.00\n- JPY: ¥50\n- KRW: ₩50\n- MXN: MX$0.10\n- MYR: MYR2.00\n- NOK: NOK3.00\n- NZD: NZ$0.50\n- PHP: ₱0.50\n- PLN: PLN2.00\n- RON: RON2.00\n- RUB: RUB0.50\n- SEK: SEK3.00\n- SGD: SGD0.50\n- THB: THB0.10\n- ZAR: ZAR0.50"
               },
               {
                 "type": "null"
@@ -57754,9 +59668,9 @@
             "anyOf": [
               {
                 "type": "integer",
-                "maximum": 1000000,
+                "maximum": 1E+6,
                 "minimum": 0,
-                "description": "The price in cents."
+                "description": "The price in cents.\nMinimum amounts per currency:\n- USD: $0.50\n- AED: AED2.00\n- ARS: ARS0.50\n- AUD: A$0.50\n- BRL: R$0.50\n- CAD: CA$0.50\n- CHF: CHF0.50\n- COP: COP0.50\n- CZK: CZK15.00\n- DKK: DKK2.50\n- EUR: €0.50\n- GBP: £0.30\n- HKD: HK$4.00\n- HUF: HUF175.00\n- IDR: IDR0.50\n- ILS: ₪0.50\n- INR: ₹60.00\n- JPY: ¥50\n- KRW: ₩50\n- MXN: MX$0.10\n- MYR: MYR2.00\n- NOK: NOK3.00\n- NZD: NZ$0.50\n- PHP: ₱0.50\n- PLN: PLN2.00\n- RON: RON2.00\n- RUB: RUB0.50\n- SEK: SEK3.00\n- SGD: SGD0.50\n- THB: THB0.10\n- ZAR: ZAR0.50"
               },
               {
                 "type": "null"
@@ -57861,9 +59775,9 @@
           "price_amount": {
             "type": "integer",
             "maximum": 99999999,
-            "minimum": 50,
+            "minimum": 10,
             "title": "Price Amount",
-            "description": "The price in cents."
+            "description": "The price in cents.\nMinimum amounts per currency:\n- USD: $0.50\n- AED: AED2.00\n- ARS: ARS0.50\n- AUD: A$0.50\n- BRL: R$0.50\n- CAD: CA$0.50\n- CHF: CHF0.50\n- COP: COP0.50\n- CZK: CZK15.00\n- DKK: DKK2.50\n- EUR: €0.50\n- GBP: £0.30\n- HKD: HK$4.00\n- HUF: HUF175.00\n- IDR: IDR0.50\n- ILS: ₪0.50\n- INR: ₹60.00\n- JPY: ¥50\n- KRW: ₩50\n- MXN: MX$0.10\n- MYR: MYR2.00\n- NOK: NOK3.00\n- NZD: NZ$0.50\n- PHP: ₱0.50\n- PLN: PLN2.00\n- RON: RON2.00\n- RUB: RUB0.50\n- SEK: SEK3.00\n- SGD: SGD0.50\n- THB: THB0.10\n- ZAR: ZAR0.50"
           }
         },
         "type": "object",
@@ -58274,6 +60188,11 @@
       },
       "ProductPriceSeatTiers-Input": {
         "properties": {
+          "seat_tier_type": {
+            "$ref": "#/components/schemas/SeatTierType",
+            "description": "How tiers are applied. 'volume' prices all seats at the matching tier's rate. 'graduated' prices each tier's range independently.",
+            "default": "volume"
+          },
           "tiers": {
             "items": {
               "$ref": "#/components/schemas/ProductPriceSeatTier"
@@ -58293,6 +60212,11 @@
       },
       "ProductPriceSeatTiers-Output": {
         "properties": {
+          "seat_tier_type": {
+            "$ref": "#/components/schemas/SeatTierType",
+            "description": "How tiers are applied. 'volume' prices all seats at the matching tier's rate. 'graduated' prices each tier's range independently.",
+            "default": "volume"
+          },
           "tiers": {
             "items": {
               "$ref": "#/components/schemas/ProductPriceSeatTier"
@@ -59388,7 +61312,7 @@
               }
             ],
             "title": "External Member Id",
-            "description": "External member ID for the seat assignment. Only supported when member_model_enabled is true. Can be used alone (lookup existing member) or with email (create/validate member)."
+            "description": "External member ID for the seat assignment. Can be used alone (lookup existing member) or with email (create/validate member)."
           },
           "member_id": {
             "anyOf": [
@@ -59401,7 +61325,7 @@
               }
             ],
             "title": "Member Id",
-            "description": "Member ID for the seat assignment. Only supported when member_model_enabled is true."
+            "description": "Member ID for the seat assignment."
           },
           "metadata": {
             "anyOf": [
@@ -59494,6 +61418,14 @@
           "revoked"
         ],
         "title": "SeatStatus"
+      },
+      "SeatTierType": {
+        "type": "string",
+        "enum": [
+          "volume",
+          "graduated"
+        ],
+        "title": "SeatTierType"
       },
       "SeatsList": {
         "properties": {
@@ -59840,6 +61772,17 @@
             "type": "array",
             "title": "Meters",
             "description": "List of meters associated with the subscription."
+          },
+          "pending_update": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/PendingSubscriptionUpdate"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Pending subscription update that will be applied at the beginning of the next period. If `null`, there is no pending update."
           }
         },
         "type": "object",
@@ -59872,7 +61815,8 @@
           "product",
           "discount",
           "prices",
-          "meters"
+          "meters",
+          "pending_update"
         ],
         "title": "Subscription"
       },
@@ -61006,7 +62950,7 @@
             "title": "Consumed Units",
             "description": "The number of consumed units so far in this billing period.",
             "examples": [
-              25
+              25.0
             ]
           },
           "credited_units": {
@@ -61225,7 +63169,8 @@
         "type": "string",
         "enum": [
           "invoice",
-          "prorate"
+          "prorate",
+          "next_period"
         ],
         "title": "SubscriptionProrationBehavior"
       },
@@ -61988,6 +63933,273 @@
         ],
         "title": "SubscriptionUpdateTrial"
       },
+      "SubscriptionUpdatedBillingPeriodMetadata": {
+        "properties": {
+          "subscription_id": {
+            "type": "string",
+            "title": "Subscription Id"
+          },
+          "billing_period_end": {
+            "type": "string",
+            "title": "Billing Period End"
+          }
+        },
+        "type": "object",
+        "required": [
+          "subscription_id",
+          "billing_period_end"
+        ],
+        "title": "SubscriptionUpdatedBillingPeriodMetadata"
+      },
+      "SubscriptionUpdatedDiscountMetadata": {
+        "properties": {
+          "subscription_id": {
+            "type": "string",
+            "title": "Subscription Id"
+          },
+          "discount_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Discount Id"
+          }
+        },
+        "type": "object",
+        "required": [
+          "subscription_id",
+          "discount_id"
+        ],
+        "title": "SubscriptionUpdatedDiscountMetadata"
+      },
+      "SubscriptionUpdatedEvent": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid4",
+            "title": "Id",
+            "description": "The ID of the object."
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Timestamp",
+            "description": "The timestamp of the event."
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid4",
+            "title": "Organization Id",
+            "description": "The ID of the organization owning the event.",
+            "examples": [
+              "1dbfc517-0bbf-4301-9ba8-555ca42b9737"
+            ],
+            "x-polar-selector-widget": {
+              "displayProperty": "name",
+              "resourceName": "Organization",
+              "resourceRoot": "/v1/organizations"
+            }
+          },
+          "customer_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid4"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Customer Id",
+            "description": "ID of the customer in your Polar organization associated with the event."
+          },
+          "customer": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Customer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "The customer associated with the event."
+          },
+          "external_customer_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "External Customer Id",
+            "description": "ID of the customer in your system associated with the event."
+          },
+          "member_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid4"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Member Id",
+            "description": "ID of the member within the customer's organization who performed the action inside B2B."
+          },
+          "external_member_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "External Member Id",
+            "description": "ID of the member in your system within the customer's organization who performed the action inside B2B."
+          },
+          "child_count": {
+            "type": "integer",
+            "title": "Child Count",
+            "description": "Number of direct child events linked to this event.",
+            "default": 0
+          },
+          "parent_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid4"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Parent Id",
+            "description": "The ID of the parent event."
+          },
+          "label": {
+            "type": "string",
+            "title": "Label",
+            "description": "Human readable label of the event type."
+          },
+          "source": {
+            "type": "string",
+            "const": "system",
+            "title": "Source",
+            "description": "The source of the event. `system` events are created by Polar. `user` events are the one you create through our ingestion API."
+          },
+          "name": {
+            "type": "string",
+            "const": "subscription.updated",
+            "title": "Name",
+            "description": "The name of the event."
+          },
+          "metadata": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/SubscriptionUpdatedProductMetadata"
+              },
+              {
+                "$ref": "#/components/schemas/SubscriptionUpdatedDiscountMetadata"
+              },
+              {
+                "$ref": "#/components/schemas/SubscriptionUpdatedTrialMetadata"
+              },
+              {
+                "$ref": "#/components/schemas/SubscriptionUpdatedSeatsMetadata"
+              },
+              {
+                "$ref": "#/components/schemas/SubscriptionUpdatedBillingPeriodMetadata"
+              }
+            ],
+            "title": "Metadata"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "timestamp",
+          "organization_id",
+          "customer_id",
+          "customer",
+          "external_customer_id",
+          "label",
+          "source",
+          "name",
+          "metadata"
+        ],
+        "title": "SubscriptionUpdatedEvent",
+        "description": "An event created by Polar when a subscription is updated."
+      },
+      "SubscriptionUpdatedProductMetadata": {
+        "properties": {
+          "subscription_id": {
+            "type": "string",
+            "title": "Subscription Id"
+          },
+          "product_id": {
+            "type": "string",
+            "title": "Product Id"
+          },
+          "proration_behavior": {
+            "$ref": "#/components/schemas/SubscriptionProrationBehavior"
+          }
+        },
+        "type": "object",
+        "required": [
+          "subscription_id",
+          "product_id",
+          "proration_behavior"
+        ],
+        "title": "SubscriptionUpdatedProductMetadata"
+      },
+      "SubscriptionUpdatedSeatsMetadata": {
+        "properties": {
+          "subscription_id": {
+            "type": "string",
+            "title": "Subscription Id"
+          },
+          "seats": {
+            "type": "integer",
+            "title": "Seats"
+          },
+          "proration_behavior": {
+            "$ref": "#/components/schemas/SubscriptionProrationBehavior"
+          }
+        },
+        "type": "object",
+        "required": [
+          "subscription_id",
+          "seats",
+          "proration_behavior"
+        ],
+        "title": "SubscriptionUpdatedSeatsMetadata"
+      },
+      "SubscriptionUpdatedTrialMetadata": {
+        "properties": {
+          "subscription_id": {
+            "type": "string",
+            "title": "Subscription Id"
+          },
+          "trial_end": {
+            "type": "string",
+            "title": "Trial End"
+          }
+        },
+        "type": "object",
+        "required": [
+          "subscription_id",
+          "trial_end"
+        ],
+        "title": "SubscriptionUpdatedTrialMetadata"
+      },
       "SubscriptionUser": {
         "properties": {
           "id": {
@@ -62056,6 +64268,9 @@
           },
           {
             "$ref": "#/components/schemas/SubscriptionCreatedEvent"
+          },
+          {
+            "$ref": "#/components/schemas/SubscriptionUpdatedEvent"
           },
           {
             "$ref": "#/components/schemas/SubscriptionCycledEvent"
@@ -62143,7 +64358,8 @@
             "subscription.product_updated": "#/components/schemas/SubscriptionProductUpdatedEvent",
             "subscription.revoked": "#/components/schemas/SubscriptionRevokedEvent",
             "subscription.seats_updated": "#/components/schemas/SubscriptionSeatsUpdatedEvent",
-            "subscription.uncanceled": "#/components/schemas/SubscriptionUncanceledEvent"
+            "subscription.uncanceled": "#/components/schemas/SubscriptionUncanceledEvent",
+            "subscription.updated": "#/components/schemas/SubscriptionUpdatedEvent"
           }
         }
       },
@@ -62271,7 +64487,14 @@
             "title": "Scope"
           },
           "id_token": {
-            "type": "string",
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
             "title": "Id Token"
           }
         },
@@ -62280,9 +64503,7 @@
           "access_token",
           "token_type",
           "expires_in",
-          "refresh_token",
-          "scope",
-          "id_token"
+          "scope"
         ],
         "title": "TokenResponse"
       },
